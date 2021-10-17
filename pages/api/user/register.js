@@ -5,7 +5,7 @@ import pg from "libs/pg";
 const handleRegister = async (req, res) => {
   try {
     if (req.method.toUpperCase() !== 'POST') {
-      errHandler(res, { message: "invalid method" })
+      throw { message: "invalid method", onlyAccepted: "POST" }
     }
 
     const newUser = await pg.user.create({
@@ -17,8 +17,11 @@ const handleRegister = async (req, res) => {
     })
 
     res.status(201).json({
-      name: newUser.name,
-      email: newUser.email
+      user: {
+        name: newUser.name,
+        email: newUser.email
+      },
+      message: "Akun berhasil dibuat"
     })
   } catch (err) {
     console.log(err.message, "<<< ERROR")

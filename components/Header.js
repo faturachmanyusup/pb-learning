@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import Link from "next/link"
+import { useRouter } from 'next/router'
 import Img from 'next/image'
 
-const Header = () => {
+const Header = (props) => {
+  const router = useRouter()
   const [activeLink, setActiveLink] = useState(null);
 
   return (
@@ -16,7 +18,7 @@ const Header = () => {
               </a>
             </Link>
           </div>
-          <div className="hidden lg:flex col-start-4 col-end-8 text-black-500 justify-center">
+          {/* <div className="hidden lg:flex col-start-4 col-end-8 text-black-500 justify-center">
             <Link
               activeClass="active"
               href="/news"
@@ -71,14 +73,16 @@ const Header = () => {
                 Tentang Kami
               </a>
             </Link>
-          </div>
-          <div className="h-11 col-start-11 col-end-11 font-medium flex justify-end items-center lg:pb-1">
-            <Link href="/login">
-              <a className="text-black-600 mx-2 sm:mx-4 capitalize tracking-wide hover:text-orange-500 transition-all">
-                Masuk
-              </a>
-            </Link>
-          </div>
+          </div> */}
+          {router.pathname !== "/login" && (
+            <div className="h-11 col-start-11 col-end-11 font-medium flex justify-end items-center lg:pb-1">
+              <Link href="/login">
+                <a className="text-black-600 mx-2 sm:mx-4 capitalize tracking-wide hover:text-orange-500 transition-all">
+                  Masuk
+                </a>
+              </Link>
+            </div>
+          )}
         </nav>
       </header>
 

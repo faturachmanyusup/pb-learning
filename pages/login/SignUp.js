@@ -25,19 +25,19 @@ export function SignUp(props) {
 
     POST('/api/user/register', form)
       .then(res => {
-        if (res.code !== 201) throw res;
-
+        if (res.status !== 201) throw res;
+        
         props.setNotif({
-          open: false,
+          open: true,
           type: "success",
-          message: "Akun berhasil dibuat"
+          message: res.data.message
         })
       })
       .catch(err => {
         props.setNotif({
           open: true,
           type: 'danger',
-          message: err.message
+          message: err.data.message
         })
       })
       .finally(_ => {
@@ -93,7 +93,7 @@ export function SignUp(props) {
         <br />
         <ButtonPrimary
           type="submit"
-          loading={loading ? loading : undefined}
+          loading={String(loading)}
         >
           Daftar
         </ButtonPrimary>

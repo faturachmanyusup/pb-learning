@@ -24,19 +24,19 @@ export function SignIn(props) {
 
     POST('/api/user/login', form)
       .then(res => {
-        if (res.code !== 200) throw res;
+        if (res.status !== 200) throw res;
 
         props.setNotif({
           open: true,
           type: "success",
-          message: res.message
+          message: res.data.message
         })
       })
       .catch(err => {
         props.setNotif({
           open: true,
           type: "danger",
-          message: err.message
+          message: err.data.message
         })
       })
       .finally(_ => {
@@ -84,7 +84,7 @@ export function SignIn(props) {
         <span>Lupa Password ?</span>
         <ButtonPrimary
           type="submit"
-          loading={loading ? loading : undefined}
+          loading={String(loading)}
         >
           Masuk
         </ButtonPrimary>

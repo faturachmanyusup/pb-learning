@@ -6,12 +6,12 @@ import ButtonPrimary from "../components/Button/Primary"
 const Hero = ({
   overview = [
     {
-      name: "Users",
+      name: "Pengguna",
       number: "390",
       icon: "/assets/count-user.svg",
     },
     {
-      name: "Locations",
+      name: "Lokasi",
       number: "20",
       icon: "/assets/count-location.svg",
     },
@@ -44,15 +44,15 @@ const Hero = ({
         >
           <div className=" flex flex-col justify-center items-start row-start-2 sm:row-start-1">
             <h1 className="text-2xl lg:text-3xl xl:text-4xl font-medium text-black-600 leading-normal">
-              Belajar kapanpun, dan di manapun dengan <strong>PB-Learning</strong>.
+              Belajar kapanpun dan di manapun dengan <strong>PB-Learning</strong>.
             </h1>
             <br />
             <p className="text-black-500 mt-4 mb-6">
-              {/* PB-Learning hadir untuk membantu mereka yang terkendala jarak 
-            dalam aktivitas belajar mengajar. */}
-              PB Learning adalah platform lengkap untuk kegiatan belajar mengajar Anda.
+              PB-Learning hadir untuk membantu mereka yang terkendala jarak 
+              dalam kegiatan belajar mengajar.
+              {/* PB Learning adalah platform lengkap untuk kegiatan belajar mengajar Anda.
               Platform yang aman dan mudah digunakan.
-              Membantu pengajar mengelola, mengukur, dan memperkaya pengalaman belajar.
+              Membantu pengajar mengelola, mengukur, dan memperkaya pengalaman belajar. */}
             </p>
             <ButtonPrimary onClick={handleStart}>Mulai</ButtonPrimary>
           </div>
