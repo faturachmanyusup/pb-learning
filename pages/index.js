@@ -1,82 +1,98 @@
-import Head from 'next/head'
+import Image from "next/image"
+import { useRouter } from "next/router";
+import ButtonPrimary from "../components/Button/Primary"
 
-export default function Home() {
+const Hero = ({
+  overview = [
+    {
+      name: "Users",
+      number: "390",
+      icon: "/assets/count-user.svg",
+    },
+    {
+      name: "Locations",
+      number: "20",
+      icon: "/assets/count-location.svg",
+    },
+    {
+      name: "Server",
+      number: "50",
+      icon: "/assets/count-server.svg",
+    },
+  ],
+}) => {
+  const router = useRouter()
+
+  const handleStart = () => {
+    router.push('/login')
+  }
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
-
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
-            pages/index.js
-          </code>
-        </p>
-
-        <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+    <div className="max-w-screen-xl mt-20 px-10 h-full xl:px-16 mx-auto">
+      <div
+        className="
+          grid grid-flow-row grid-rows-2 pt-6
+          md:grid-rows-1
+          sm:grid-flow-col sm:grid-cols-2
+        "
+      >
+        <div className=" flex flex-col justify-center items-start row-start-2 sm:row-start-1">
+          <h1 className="text-2xl lg:text-3xl xl:text-4xl font-medium text-black-600 leading-normal">
+            Belajar kapanpun, dan di manapun dengan <strong>PB-Learning</strong>.
+          </h1>
+          <br />
+          <p className="text-black-500 mt-4 mb-6">
+            {/* PB-Learning hadir untuk membantu mereka yang terkendala jarak 
+            dalam aktivitas belajar mengajar. */}
+            PB Learning adalah platform lengkap untuk kegiatan belajar mengajar Anda.
+            Platform yang aman dan mudah digunakan.
+            Membantu pengajar mengelola, mengukur, dan memperkaya pengalaman belajar.
+          </p>
+          <ButtonPrimary onClick={handleStart}>Mulai</ButtonPrimary>
         </div>
-      </main>
-
-      <footer className="flex items-center justify-center w-full h-24 border-t">
-        <a
-          className="flex items-center justify-center"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+        <div className="w-full">
+          <Image
+            src="/assets/e-learning-illustration.jpg"
+            alt="Illustrasi"
+            quality={100}
+            width={612}
+            height={383}
+            layout="responsive"
+          />
+        </div>
+      </div>
+      <div className="relative w-full flex lg:mt-10">
+        <div
+          className="
+            rounded-lg w-full grid grid-flow-row grid-cols-1 py-9 divide-y-2 divide-gray-100 bg-white-500 z-10
+            sm:grid-flow-row sm:grid-cols-3 sm:divide-y-0 sm:divide-x-2
+          "
         >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
-        </a>
-      </footer>
+          {overview.map((count, index) => (
+            <div
+              key={index}
+              className="
+                flex items-center justify-start py-4 w-8/12 px-4 mx-auto 
+                sm:justify-center sm:py-6 sm:w-auto sm:mx-0
+              "
+            >
+              <div className="flex mx-auto w-40 sm:w-auto">
+                <div className="flex items-center justify-center bg-orange-100 w-12 h-12 mr-6 rounded-full">
+                  <img src={count.icon} className="h-6 w-6" />
+                </div>
+                <div className="flex flex-col">
+                  <p className="text-xl text-black-600 font-bold">
+                    {count.number}+
+                  </p>
+                  <p className="text-lg text-black-500">{count.name}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
+
+export default Hero;
