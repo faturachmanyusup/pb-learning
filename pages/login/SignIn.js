@@ -16,9 +16,11 @@ const defaultForm = {
 
 export function SignIn(props) {
   const [form, setForm] = useState(defaultForm)
+  const [loading, setLoading] = useState(false)
 
   const handleLogin = (e) => {
-    e.preventDefault();
+    e.preventDefault()
+    setLoading(true)
 
     POST('/api/user/login', form)
       .then(res => {
@@ -39,6 +41,7 @@ export function SignIn(props) {
       })
       .finally(_ => {
         setForm(defaultForm)
+        setLoading(false)
       })
   }
 
@@ -79,7 +82,12 @@ export function SignIn(props) {
           onChange={handleChange}
         />
         <span>Lupa Password ?</span>
-        <ButtonPrimary type="submit">Masuk</ButtonPrimary>
+        <ButtonPrimary
+          type="submit"
+          loading={loading ? loading : undefined}
+        >
+          Masuk
+        </ButtonPrimary>
       </form>
     </div>
   )

@@ -17,9 +17,11 @@ const defaultForm = {
 
 export function SignUp(props) {
   const [form, setForm] = useState(defaultForm)
+  const [loading, setLoading] = useState(false)
 
   const handleRegister = (e) => {
-    e.preventDefault();
+    e.preventDefault()
+    setLoading(true)
 
     POST('/api/user/register', form)
       .then(res => {
@@ -40,6 +42,7 @@ export function SignUp(props) {
       })
       .finally(_ => {
         setForm(defaultForm)
+        setLoading(false)
       })
   }
 
@@ -88,7 +91,12 @@ export function SignUp(props) {
           onChange={handleChange}
         />
         <br />
-        <ButtonPrimary type="submit">Daftar</ButtonPrimary>
+        <ButtonPrimary
+          type="submit"
+          loading={loading ? loading : undefined}
+        >
+          Daftar
+        </ButtonPrimary>
       </form>
     </div>
   )

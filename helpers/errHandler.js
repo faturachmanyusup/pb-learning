@@ -1,4 +1,6 @@
 export default function errHandler(res, err) {
+  console.log(err.message, "<<<< ERROR")
+
   if (err.message === "auth failed") {
     res.status(400).json({
       code: 400,
@@ -24,6 +26,10 @@ export default function errHandler(res, err) {
   }
   
   else {
-    res.status(500).json(err)
+    res.status(500).json({
+      code: 500,
+      name: "Internal server error",
+      message: "Internal server error"
+    })
   }
 }

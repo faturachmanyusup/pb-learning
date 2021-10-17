@@ -14,11 +14,13 @@ const handleLogin = async (req, res) => {
       where: { email }
     })
 
-    if (bcrypt.compare(password, user.password)) {
-      res.status(200).json({ user, message: "Login berhasil" })
-    } else {
+    if (!user) {
+      throw { message: "auth failed" }
+    } else if (!bcrypt.compare(password, user.password)) {
       throw { message: "auth failed" }
     }
+
+    res.status(200).json({ user, message: "Login berhasil" })
   } catch (err) {
     errHandler(res, err)
   }
