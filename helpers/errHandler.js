@@ -24,10 +24,6 @@ export default function errHandler(res, err) {
   }
   
   else {
-    res.status(400).json({
-      code: 400,
-      name: "Internal server error",
-      message: "Internal server error"
-    })
+    res.status(500).json(err)
   }
 }
