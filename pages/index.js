@@ -5,6 +5,7 @@ import ButtonPrimary from "components/Button/Primary"
 import { GET } from "libs/request"
 import Drawer from "components/Drawer"
 import Header from "components/Header/Landing"
+import config from "config/config"
 
 const Home = ({ overview = [] }) => {
   const router = useRouter()
@@ -92,7 +93,10 @@ const Home = ({ overview = [] }) => {
 };
 
 export async function getServerSideProps(context) {
-  const overview = await GET("http://localhost:3000/api/general/count")
+  const env = process.env.NODE_ENV
+  const baseUrl = config[env].url.base
+
+  const overview = await GET(baseUrl + "/api/general/count")
 
   return {
     props: {
