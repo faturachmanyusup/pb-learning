@@ -3,8 +3,8 @@
 an Open Online Classes App
 
 ### Features
-- Create new class (automatically define as teacher)
-- Join class using Class ID (automatically define as student)
+- Create new class (automatically defined as teacher)
+- Join class using Class ID (automatically defined as student)
 - Make schedules
 - Make assignments
 - Make assessments
