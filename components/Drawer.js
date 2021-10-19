@@ -20,7 +20,7 @@ export default function Drawer({
   if (!isOpen) return <></>
   
   return (
-    <div className="drawer-container block" onClick={handleClick}>
+    <div className="drawer-container h-screen block" onClick={handleClick}>
       <div className="drawer-content block flex flex-col justify-between px-4 py-2">
         <div>
           <div id="1" className="drawer-list">
