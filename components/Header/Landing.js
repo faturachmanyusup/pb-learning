@@ -28,8 +28,8 @@ const Header = ({
               </Link>
             </div>
           )}
-          {(router.pathname === "/login" && session === "login")
-            ? (
+          {(router.pathname === "/login" && (
+            session === "login" ? (
               <div className="h-11 col-start-11 col-end-11 font-medium flex justify-end items-center lg:pb-1 lg:hidden md:hidden">
                 <a
                   className="text-black-600 mx-2 sm:mx-4 capitalize tracking-wide hover:text-orange-500 transition-all"
@@ -48,7 +48,8 @@ const Header = ({
                   Masuk
                 </a>
               </div>
-            )}
+            )
+          ))}
         </nav>
       </header>
     </>
