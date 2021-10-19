@@ -8,6 +8,7 @@ import {
 import ButtonPrimary from 'components/Button/Primary'
 import { POST } from 'libs/request'
 import DisablePage from 'libs/disabledPage'
+import { useRouter } from 'next/router'
 
 const defaultForm = {
   email: "",
@@ -15,6 +16,8 @@ const defaultForm = {
 }
 
 export function SignIn(props) {
+  const router = useRouter()
+  
   const [form, setForm] = useState(defaultForm)
   const [loading, setLoading] = useState(false)
 
@@ -26,11 +29,9 @@ export function SignIn(props) {
       .then(res => {
         if (res.status !== 200) throw res;
 
-        props.setNotif({
-          open: true,
-          type: "success",
-          message: res.data.message
-        })
+        localStorage.setItem("pbToken", res.data.pbToken)
+        
+        router.push("/class-list")
       })
       .catch(err => {
         props.setNotif({

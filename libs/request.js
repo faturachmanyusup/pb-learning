@@ -2,7 +2,7 @@ const defaultHeader = {
   'Content-Type': 'application/json'
 }
 
-export const GET = (url = "", body = {}, header = {}) => {
+export const GET = (url = "", header = {}) => {
   let status = 500
   
   return fetch(url, {
@@ -10,8 +10,7 @@ export const GET = (url = "", body = {}, header = {}) => {
     headers: {
       ...defaultHeader,
       ...header
-    },
-    body: JSON.stringify(body)
+    }
   })
   .then(res => {
     status = res.status

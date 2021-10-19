@@ -1,5 +1,6 @@
 import errHandler from "helpers/errHandler";
 import bcrypt from "libs/bcrypt";
+import jwt from "libs/jwt";
 import pg from "libs/pg";
 
 const handleRegister = async (req, res) => {
@@ -16,15 +17,16 @@ const handleRegister = async (req, res) => {
       }
     })
 
+    const token = jwt.sign({
+      name: newUser.name,
+      email: newUser.email
+    })
+
     res.status(201).json({
-      user: {
-        name: newUser.name,
-        email: newUser.email
-      },
+      pbToken: token,
       message: "Akun berhasil dibuat"
     })
   } catch (err) {
-    console.log(err.message, "<<< ERROR")
     errHandler(res, err)
   }
 }

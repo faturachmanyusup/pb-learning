@@ -1,27 +1,12 @@
 import Image from "next/image"
 import Head from "next/head"
-import { useRouter } from "next/router";
-import ButtonPrimary from "../components/Button/Primary"
+import { useRouter } from "next/router"
+import ButtonPrimary from "components/Button/Primary"
+import { GET } from "libs/request"
+import Drawer from "components/Drawer"
+import Header from "components/Header/Landing"
 
-const Hero = ({
-  overview = [
-    {
-      name: "Pengguna",
-      number: "390",
-      icon: "/assets/count-user.svg",
-    },
-    {
-      name: "Lokasi",
-      number: "20",
-      icon: "/assets/count-location.svg",
-    },
-    {
-      name: "Server",
-      number: "50",
-      icon: "/assets/count-server.svg",
-    },
-  ],
-}) => {
+const Home = ({ overview = [] }) => {
   const router = useRouter()
 
   const handleStart = () => {
@@ -34,6 +19,10 @@ const Hero = ({
         <title>PB-Learning</title>
         <meta property="og:title" key="login" />
       </Head>
+      <Header />
+      <Drawer>
+        text
+      </Drawer>
       <div className="max-w-screen-xl mt-20 px-10 h-full xl:px-16 mx-auto">
         <div
           className="
@@ -48,7 +37,7 @@ const Hero = ({
             </h1>
             <br />
             <p className="text-black-500 mt-4 mb-6">
-              PB-Learning hadir untuk membantu mereka yang terkendala jarak 
+              PB-Learning hadir untuk membantu mereka yang terkendala jarak
               dalam kegiatan belajar mengajar.
               {/* PB Learning adalah platform lengkap untuk kegiatan belajar mengajar Anda.
               Platform yang aman dan mudah digunakan.
@@ -88,7 +77,7 @@ const Hero = ({
                   </div>
                   <div className="flex flex-col">
                     <p className="text-xl text-black-600 font-bold">
-                      {count.number}+
+                      {count.number}
                     </p>
                     <p className="text-lg text-black-500">{count.name}</p>
                   </div>
@@ -102,4 +91,18 @@ const Hero = ({
   );
 };
 
-export default Hero;
+export async function getServerSideProps(context) {
+  const overview = await GET("http://localhost:3000/api/general/count")
+
+  return {
+    props: {
+      overview: overview.data,
+    },
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every 10 seconds
+    // revalidate: 5,
+  }
+}
+
+export default Home;

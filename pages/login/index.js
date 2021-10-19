@@ -4,6 +4,7 @@ import Overlay from './Overlay';
 import { SignUp } from './SignUp';
 import { SignIn } from './SignIn';
 import AlertFloating from 'components/Alert/Floating';
+import Header from 'components/Header/Landing';
 
 const defaultNotif = {
   open: false,
@@ -42,6 +43,7 @@ export default function index() {
         <title>PB-Learning - {fmtSession}</title>
         <meta property="og:title" key="login" />
       </Head>
+      <Header />
       <div className="body-login">
         <div className={session === 'login' ? "container" : "container-right-panel-active"} id="container">
           <SignUp setNotif={(newNotif) => handleNotif(newNotif)} />

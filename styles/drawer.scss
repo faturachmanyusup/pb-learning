@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.drawer-container {
+  bottom: 0;
+  height: 100vh;
+  left: 0;
+  background-color: rgba($color: #C5C6C3, $alpha: 0.4);
+  opacity: 1;
+  overflow: hidden;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100vw;
+  z-index: 990;
+
+  .drawer-content {
+    box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+    background-color: #fff;
+    opacity: 1;
+    bottom: 0;
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 17rem;
+    z-index: 50;
+    transition-timing-function: cubic-bezier(0.0,0.0,0.2,1);
+    transform: translateX(0);
+    
+    .drawer-list {
+      -webkit-align-items: center;
+      align-items: center;
+      cursor: pointer;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      height: 3.5rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      position: relative;
+      
+      p {
+        margin: 0 20px;
+      }
+    }
+
+    .drawer-list:hover {
+      background-color: rgba($color: #C5C6C3, $alpha: 0.4);
+    }
+  }
+}

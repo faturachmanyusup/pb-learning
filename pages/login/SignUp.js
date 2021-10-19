@@ -8,6 +8,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import ButtonPrimary from 'components/Button/Primary'
 import { POST } from 'libs/request'
+import { useRouter } from 'next/router'
 
 const defaultForm = {
   name: "",
@@ -16,6 +17,8 @@ const defaultForm = {
 }
 
 export function SignUp(props) {
+  const router = useRouter()
+  
   const [form, setForm] = useState(defaultForm)
   const [loading, setLoading] = useState(false)
 
@@ -26,12 +29,10 @@ export function SignUp(props) {
     POST('/api/user/register', form)
       .then(res => {
         if (res.status !== 201) throw res;
+
+        localStorage.setItem("pbToken", res.data.pbToken)
         
-        props.setNotif({
-          open: true,
-          type: "success",
-          message: res.data.message
-        })
+        router.push("/class-list")
       })
       .catch(err => {
         props.setNotif({

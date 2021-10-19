@@ -1,6 +1,7 @@
 import errHandler from "helpers/errHandler";
 import bcrypt from "libs/bcrypt";
 import pg from "libs/pg";
+import jwt from 'libs/jwt'
 
 const handleLogin = async (req, res) => {
   try {
@@ -20,7 +21,9 @@ const handleLogin = async (req, res) => {
       throw { message: "auth failed" }
     }
 
-    res.status(200).json({ user, message: "Login berhasil" })
+    const token = jwt.sign(user)
+
+    res.status(200).json({ pbToken: token, message: "Login berhasil" })
   } catch (err) {
     errHandler(res, err)
   }
