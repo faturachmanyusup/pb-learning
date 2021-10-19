@@ -1,11 +1,12 @@
-import { useState } from 'react'
 import Link from "next/link"
 import Img from 'next/image'
 import { useRouter } from 'next/router'
 
-const Header = (props) => {
+const Header = ({
+  session = "",
+  setSession = () => { }
+}) => {
   const router = useRouter()
-  const [activeLink, setActiveLink] = useState(null);
 
   return (
     <>
@@ -27,13 +28,29 @@ const Header = (props) => {
               </Link>
             </div>
           )}
+          {(router.pathname === "/login" && session === "login")
+            ? (
+              <div className="h-11 col-start-11 col-end-11 font-medium flex justify-end items-center lg:pb-1 lg:hidden md:hidden">
+                <a
+                  className="text-black-600 mx-2 sm:mx-4 capitalize tracking-wide hover:text-orange-500 transition-all"
+                  onClick={() => setSession("register")}
+                >
+                  Daftar
+                </a>
+              </div>
+            )
+            : (
+              <div className="h-11 col-start-11 col-end-11 font-medium flex justify-end items-center lg:pb-1 lg:hidden md:hidden">
+                <a
+                  className="text-black-600 mx-2 sm:mx-4 capitalize tracking-wide hover:text-orange-500 transition-all"
+                  onClick={() => setSession("login")}
+                >
+                  Masuk
+                </a>
+              </div>
+            )}
         </nav>
       </header>
-
-      {/* Mobile Navigation */}
-      <nav className="fixed lg:hidden bottom-0 left-0 right-0 z-20 px-4 sm:px-8 shadow-t ">
-      </nav>
-      {/* End Mobile Navigation */}
     </>
   );
 }

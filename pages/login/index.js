@@ -43,7 +43,7 @@ export default function index() {
         <title>PB-Learning - {fmtSession}</title>
         <meta property="og:title" key="login" />
       </Head>
-      <Header />
+      <Header session={session} setSession={(v) => setSession(v)} />
       <div className="body-login">
         <div className={session === 'login' ? "container" : "container-right-panel-active"} id="container">
           <SignUp setNotif={(newNotif) => handleNotif(newNotif)} />
