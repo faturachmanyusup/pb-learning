@@ -13,8 +13,8 @@ const Header = ({
 
   return (
     <>
-      <header className="fixed top-0 w-full z-30 bg-white-500 transition-all">
-        <nav className="max-w-screen-xl px-6 sm:px-8 lg:px-16 mx-auto grid grid-flow-col py-3 sm:py-4">
+      <header className="fixed top-0 w-full z-30 bg-white-500 transition-all border-b border-gray-500">
+        <nav className="max-w-screen-xl px-6 sm:px-8 lg:pt-4 lg:pb-2 mx-auto grid grid-flow-col pt-2 pb-1 sm:py-1">
           <div className="col-start-1 col-end-2 flex items-center">
             <div className="self-center mr-4">
               <Img
@@ -32,7 +32,7 @@ const Header = ({
             </Link>
           </div>
           <div className="h-11 col-start-11 col-end-11 font-medium flex justify-end items-center lg:pb-1">
-            <div className="self-start w-auto mr-6">
+            <div className="self-start w-auto mr-6 mt-0.3">
               <div className="flex flex-row justify-end mb-3">
                 <Img
                   src="/assets/icons/plus-lg.svg"
@@ -44,7 +44,7 @@ const Header = ({
               </div>
               <ModalAdd open={modalAddOpen} />
             </div>
-            <div className="self-start rounded-full h-8 w-8 flex items-center justify-center border-2 border-black-600 cursor-pointer">
+            <div className="self-center rounded-full h-8 w-8 flex items-center justify-center border-2 border-black-600 cursor-pointer">
               <Img src="/assets/icons/person-fill.svg" width="27" height="27" />
             </div>
           </div>

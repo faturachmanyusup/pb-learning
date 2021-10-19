@@ -78,6 +78,9 @@ module.exports = {
           },
         },
       }),
+      margin: {
+        '0.3': '0.3rem'
+      }
     },
   },
   variants: {

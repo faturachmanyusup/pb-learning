@@ -1,16 +1,14 @@
-import { useState } from 'react'
 import Link from "next/link"
 import Img from 'next/image'
 import { useRouter } from 'next/router'
 
 const Header = (props) => {
   const router = useRouter()
-  const [activeLink, setActiveLink] = useState(null);
 
   return (
     <>
-      <header className="fixed top-0 w-full z-30 bg-white-500 transition-all">
-        <nav className="max-w-screen-xl px-6 sm:px-8 lg:px-16 mx-auto grid grid-flow-col py-3 sm:py-4">
+      <header className="fixed top-0 w-full z-30 bg-white-500 transition-all border-b border-gray-500">
+        <nav className="max-w-screen-xl px-6 sm:px-8 lg:pt-4 lg:pb-2 mx-auto grid grid-flow-col pt-2 pb-1 sm:py-1">
           <div className="col-start-1 col-end-2 flex items-center">
             <Link href="/">
               <a>
