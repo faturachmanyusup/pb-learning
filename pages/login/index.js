@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import Overlay from './Overlay';
 import { SignUp } from './SignUp';
 import { SignIn } from './SignIn';
 import AlertFloating from 'components/Alert/Floating';
 import Header from 'components/Header/Landing';
+import { useRouter } from 'next/router';
 
 const defaultNotif = {
   open: false,
@@ -13,10 +14,21 @@ const defaultNotif = {
 }
 
 export default function index() {
+  const router = useRouter()
+  
   const [session, setSession] = useState('login')
   const [notif, setNotif] = useState(defaultNotif)
   const [tOut, setTOut] = useState(null)
+  const [loading, setLoading] = useState(false)
 
+  useEffect(() => {
+    if (localStorage.getItem("pbToken")) {
+      router.push("/class-list")
+    } else {
+      setLoading(false)
+    }
+  }, [])
+  
   const handleNotif = (newNotif) => {
     setNotif(defaultNotif)
     setNotif(newNotif)
@@ -34,6 +46,8 @@ export default function index() {
   const closeAlert = () => {
     setNotif(defaultNotif)
   }
+
+  if (loading) return <></>
 
   const fmtSession = session[0].toUpperCase() + session.slice(1)
 

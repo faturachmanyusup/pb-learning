@@ -44,7 +44,7 @@ const Header = ({
               </div>
               <ModalAdd open={modalAddOpen} />
             </div>
-            <div className="self-center rounded-full h-8 w-8 flex items-center justify-center border-2 border-black-600 cursor-pointer">
+            <div className="self-center rounded-full h-8 mb-0.3 w-8 flex items-center justify-center border-2 border-black-600 cursor-pointer">
               <Img src="/assets/icons/person-fill.svg" width="27" height="27" />
             </div>
           </div>

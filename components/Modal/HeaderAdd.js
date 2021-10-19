@@ -6,7 +6,7 @@ const HeaderAdd = ({
   if (!open) return <></>
   
   return (
-    <div className="border bg-white-500 border-black-500 flex flex-col items-start max-h-20 pb-1 rounded-md">
+    <div className="mn:absolute mn:right-3 border bg-white-500 border-black-500 flex flex-col items-start max-h-20 pb-1 rounded-md">
       <div className="w-full pb-2 pt-2 px-4 cursor-pointer">
         <p>
           Gabung ke kelas
