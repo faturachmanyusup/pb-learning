@@ -19,25 +19,20 @@ const Home = ({ overview = [] }) => {
       <Head>
         <title>PB-Learning</title>
         <meta property="og:title" key="login" />
+        <meta name="viewport" content="width=device-width, user-scalable=no" />
       </Head>
       <Header />
       <Drawer>
         text
       </Drawer>
-      <div className="max-w-screen-xl mt-20 px-10 h-full xl:px-16 mx-auto">
-        <div
-          className="
-          grid grid-flow-row grid-rows-2 pt-6
-          md:grid-rows-1
-          sm:grid-flow-col sm:grid-cols-2
-        "
-        >
+      <div className="max-w-screen-xl mt-20 px-10 xl:px-16 mx-auto">
+        <div className="grid grid-flow-row grid-rows-2 pt-6 md:grid-rows-1 sm:grid-flow-col sm:grid-cols-2">
           <div className=" flex flex-col justify-center items-start row-start-2 sm:row-start-1">
             <h1 className="text-2xl lg:text-3xl xl:text-4xl font-medium text-black-600 leading-normal">
               Belajar kapanpun dan di manapun dengan <strong>PB-Learning</strong>.
             </h1>
             <br />
-            <p className="text-black-500 mt-4 mb-6">
+            <p className="text-black-500 mt-2 mb-6">
               PB-Learning hadir untuk membantu mereka yang terkendala jarak
               dalam kegiatan belajar mengajar.
               {/* PB Learning adalah platform lengkap untuk kegiatan belajar mengajar Anda.
@@ -68,9 +63,9 @@ const Home = ({ overview = [] }) => {
               <div
                 key={index}
                 className="
-                flex items-center justify-start py-4 w-8/12 px-4 mx-auto 
-                sm:justify-center sm:py-6 sm:w-auto sm:mx-0
-              "
+                  flex items-center py-4 w-8/12 px-4 mx-auto 
+                  sm:justify-center sm:py-6 sm:w-auto sm:mx-0
+                "
               >
                 <div className="flex mx-auto w-40 sm:w-auto">
                   <div className="flex items-center justify-center bg-orange-100 w-12 h-12 mr-6 rounded-full">

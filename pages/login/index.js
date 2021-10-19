@@ -42,6 +42,7 @@ export default function index() {
       <Head>
         <title>PB-Learning - {fmtSession}</title>
         <meta property="og:title" key="login" />
+        <meta name="viewport" content="width=device-width, user-scalable=no" />
       </Head>
       <Header session={session} setSession={(v) => setSession(v)} />
       <div className="body-login">
