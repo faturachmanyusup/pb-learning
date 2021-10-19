@@ -4,7 +4,7 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     screens: {
-      'mn': '360px',
+      'mn': '320px',
       'sm': '480px',
       'md': '768px',
       'lg': '1024px',
