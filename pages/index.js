@@ -3,7 +3,6 @@ import Head from "next/head"
 import { useRouter } from "next/router"
 import ButtonPrimary from "components/Button/Primary"
 import { GET } from "libs/request"
-import Drawer from "components/Drawer"
 import Header from "components/Header/Landing"
 import config from "config/config"
 
@@ -22,9 +21,6 @@ const Home = ({ overview = [] }) => {
         <meta name="viewport" content="width=device-width, user-scalable=no" />
       </Head>
       <Header />
-      <Drawer>
-        text
-      </Drawer>
       <div className="max-w-screen-xl mt-20 px-10 xl:px-16 mx-auto">
         <div className="grid grid-flow-row grid-rows-2 pt-6 md:grid-rows-1 sm:grid-flow-col sm:grid-cols-2">
           <div className=" flex flex-col justify-center items-start row-start-2 sm:row-start-1">
@@ -96,11 +92,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       overview: overview.data,
-    },
-    // Next.js will attempt to re-generate the page:
-    // - When a request comes in
-    // - At most once every 10 seconds
-    // revalidate: 5,
+    }
   }
 }
 

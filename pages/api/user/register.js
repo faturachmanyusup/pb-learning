@@ -1,4 +1,4 @@
-import errHandler from "helpers/errHandler";
+import errHandler from "libs/errHandler";
 import bcrypt from "libs/bcrypt";
 import jwt from "libs/jwt";
 import pg from "libs/pg";

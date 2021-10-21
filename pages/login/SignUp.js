@@ -59,7 +59,7 @@ export function SignUp(props) {
 
   return (
     <div className="form-container sign-up-container">
-      <form onSubmit={handleRegister}>
+      <form onSubmit={handleRegister} id="register-form">
         <h1>Buat Akun</h1>
         <div className="social-container">
           <span><I icon={faFacebook} /></span>
@@ -69,6 +69,7 @@ export function SignUp(props) {
         <span>Atau daftar dengan email</span>
         <input
           required
+          id="name-register"
           name="name"
           value={form.name}
           type="text"
@@ -77,6 +78,7 @@ export function SignUp(props) {
         />
         <input
           required
+          id="email-register"
           name="email"
           value={form.email}
           type="email"
@@ -85,6 +87,7 @@ export function SignUp(props) {
         />
         <input
           required
+          id="password-register"
           name="password"
           value={form.password}
           type="password"
@@ -93,6 +96,7 @@ export function SignUp(props) {
         />
         <br />
         <ButtonPrimary
+          id="submit-register"
           type="submit"
           loading={String(loading)}
         >

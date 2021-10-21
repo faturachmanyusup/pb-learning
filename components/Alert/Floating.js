@@ -2,12 +2,10 @@ const content = {
   success: {
     icon: "/assets/icons/check-green.svg",
     bgColor: "bg-green-500 border-green-700",
-    textColor: "text-green-500"
   },
   danger: {
     icon: "/assets/icons/cross-red.svg",
     bgColor: "bg-red-400 border-red-600",
-    textColor: "text-red-600"
   }
 }
 
@@ -21,6 +19,7 @@ export default function Floating({
 
   return (
     <div
+      id="floating-notification"
       className={
         `h-50 w-50 absolute bottom-24 animate-fade-out right-16 z-50
         flex items-center border-l-4 py-2 px-3 shadow-md

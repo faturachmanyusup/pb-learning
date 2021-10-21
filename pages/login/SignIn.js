@@ -58,7 +58,7 @@ export function SignIn(props) {
 
   return (
     <div className="form-container sign-in-container">
-      <form onSubmit={handleLogin}>
+      <form onSubmit={handleLogin} id="login-form">
         <h1>Masuk</h1>
         <div className="social-container">
           <span><I icon={faFacebook} /></span>
@@ -68,6 +68,7 @@ export function SignIn(props) {
         <span>atau masuk dengan email</span>
         <input
           required
+          id="email-login"
           type="email"
           name="email"
           placeholder="Email"
@@ -76,6 +77,7 @@ export function SignIn(props) {
         />
         <input
           required
+          id="password-login"
           type="password"
           name="password"
           placeholder="Kata Sandi"
@@ -84,6 +86,7 @@ export function SignIn(props) {
         />
         <span>Lupa Password ?</span>
         <ButtonPrimary
+          id="submit-login"
           type="submit"
           loading={String(loading)}
         >

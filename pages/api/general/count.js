@@ -1,4 +1,4 @@
-import errHandler from "helpers/errHandler";
+import errHandler from "libs/errHandler";
 import pg from "libs/pg";
 
 export default async function count(req, res) {

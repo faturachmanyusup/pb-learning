@@ -20,10 +20,6 @@ const ClassList = () => {
     }
   }, [])
   
-  const handleStart = () => {
-    router.push('/login')
-  }
-
   const openDrawer = (e) => {    
     setDrawerOpen(true)
   }

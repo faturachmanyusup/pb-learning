@@ -12,14 +12,14 @@ const HeaderAdd = ({
         max-h-20 pb-1 rounded-md mn:absolute mn:right-3
       "
     >
+      <div className="w-full pb-2 px-4 cursor-pointer">
+        <p>
+          Buat kelas baru
+        </p>
+      </div>
       <div className="w-full pb-2 pt-2 px-4 cursor-pointer">
         <p>
           Gabung ke kelas
-        </p>
-      </div>
-      <div className="w-full pb-2 px-4 cursor-pointer">
-        <p>
-          Buat kelas
         </p>
       </div>
     </div>
