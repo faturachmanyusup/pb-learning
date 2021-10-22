@@ -4,7 +4,7 @@ import CredentialsProvider from "next-auth/providers/credentials"
 import pg from "libs/pg"
 import bcrypt from "libs/bcrypt"
 import config from "config/config"
-import uuid from 'uuid'
+import { v4 as uuidV4 } from 'uuid'
 
 const handleGoogleAuth = async (user) => {
   try {
@@ -17,7 +17,7 @@ const handleGoogleAuth = async (user) => {
         data: {
           name: user.name,
           email: user.email,
-          password: bcrypt.hash(uuid.v4())
+          password: bcrypt.hash(uuidV4())
         }
       })
     }
@@ -29,7 +29,6 @@ const handleGoogleAuth = async (user) => {
 }
 
 export default NextAuth({
-  // Configure one or more authentication providers
   providers: [
     GoogleProvider({
       name: 'Google',

@@ -51,13 +51,8 @@ export function SignUp(props) {
   }
 
   const handleLoginGoogle = (e) => {
-    e.preventDefault()
     setLoading(true)
-    signIn("credentials", {
-      redirect: false,
-      email: form.email,
-      password: form.password
-    })
+    signIn("google", { redirect: false })
       .then(res => {
         if (res.error) throw res.error
       })
@@ -89,8 +84,8 @@ export function SignUp(props) {
       <form onSubmit={handleRegister} id="register-form">
         <h1>Buat Akun</h1>
         <div className="social-container">
-          <span onClick={handleLoginGoogle}><I icon={faFacebook} /></span>
-          <span><I icon={faGoogle} /></span>
+          <span><I icon={faFacebook} /></span>
+          <span onClick={handleLoginGoogle}><I icon={faGoogle} /></span>
           <span><I icon={faGithub} /></span>
         </div>
         <span>Atau daftar dengan email</span>
