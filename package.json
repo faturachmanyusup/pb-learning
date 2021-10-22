@@ -5,6 +5,7 @@
     "build": "next build",
     "start": "next start",
     "cypress": "cypress open",
+    "test-coverage": "npx nyc report --reporter=text",
     "update-coverage": "node helpers/updateCoverage.js"
   },
   "dependencies": {
@@ -14,8 +15,8 @@
     "@fortawesome/react-fontawesome": "^0.1.15",
     "@prisma/client": "^3.2.1",
     "bcrypt": "^5.0.1",
-    "jsonwebtoken": "^8.5.1",
     "next": "latest",
+    "next-auth": "^4.0.0-beta.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "sass": "^1.42.1",

@@ -1,7 +1,6 @@
-import errHandler from "libs/errHandler";
-import bcrypt from "libs/bcrypt";
-import pg from "libs/pg";
-import jwt from 'libs/jwt'
+import errHandler from "libs/errHandler"
+import bcrypt from "libs/bcrypt"
+import pg from "libs/pg"
 
 const handleLogin = async (req, res) => {
   try {
@@ -21,12 +20,10 @@ const handleLogin = async (req, res) => {
       throw { message: "auth failed" }
     }
 
-    const token = jwt.sign(user)
-
-    res.status(200).json({ pbToken: token, message: "Login berhasil" })
+    res.status(200).json({ message: "Login berhasil" })
   } catch (err) {
     errHandler(res, err)
   }
 }
 
-export default handleLogin;
+export default handleLogin

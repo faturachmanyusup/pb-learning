@@ -22,7 +22,7 @@ context('Login', () => {
   })
 
   it('redirect to /class-list after login using valid email & password', () => {
-    cy.intercept('/api/user/login').as('login')
+    cy.intercept('/api/auth/*').as('login')
 
     cy.location('pathname').should('include', 'login')
 
@@ -36,7 +36,7 @@ context('Login', () => {
   })
 
   it('show danger notification after login using invalid email & password', () => {
-    cy.intercept('/api/user/login').as('login')
+    cy.intercept('/api/auth/*').as('login')
 
     cy.location('pathname').should('include', 'login')
 

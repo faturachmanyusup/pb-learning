@@ -1,7 +1,6 @@
-import errHandler from "libs/errHandler";
-import bcrypt from "libs/bcrypt";
-import jwt from "libs/jwt";
-import pg from "libs/pg";
+import errHandler from "libs/errHandler"
+import bcrypt from "libs/bcrypt"
+import pg from "libs/pg"
 
 const handleRegister = async (req, res) => {
   try {
@@ -9,7 +8,7 @@ const handleRegister = async (req, res) => {
       throw { message: "invalid method", onlyAccepted: "POST" }
     }
 
-    const newUser = await pg.user.create({
+    await pg.user.create({
       data: {
         name: req.body.name,
         email: req.body.email,
@@ -17,13 +16,7 @@ const handleRegister = async (req, res) => {
       }
     })
 
-    const token = jwt.sign({
-      name: newUser.name,
-      email: newUser.email
-    })
-
     res.status(201).json({
-      pbToken: token,
       message: "Akun berhasil dibuat"
     })
   } catch (err) {

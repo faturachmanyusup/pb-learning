@@ -32,7 +32,7 @@ context('Register', () => {
 
     cy.get('#name-register').should('be.visible').type("Registered User")
     cy.get('#email-register').should('be.visible').type("admin@email.com")
-    cy.get('#password-register').should('be.visible').type("emailAlreadyRegistered")
+    cy.get('#password-register').should('be.visible').type("INVALIDPASSWORDEITHER")
     cy.get('#submit-register').should('be.visible').click()
 
     cy.wait('@register')

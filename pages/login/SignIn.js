@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { signIn } from 'next-auth/react'
 import { FontAwesomeIcon as I } from '@fortawesome/react-fontawesome'
 import {
   faGoogle,
@@ -6,7 +7,6 @@ import {
   faGithub
 } from '@fortawesome/free-brands-svg-icons'
 import ButtonPrimary from 'components/Button/Primary'
-import { POST } from 'libs/request'
 import DisablePage from 'libs/disabledPage'
 import { useRouter } from 'next/router'
 
@@ -17,27 +17,26 @@ const defaultForm = {
 
 export function SignIn(props) {
   const router = useRouter()
-  
+
   const [form, setForm] = useState(defaultForm)
   const [loading, setLoading] = useState(false)
 
   const handleLogin = (e) => {
     e.preventDefault()
     setLoading(true)
-
-    POST('/api/user/login', form)
+    signIn("credentials", {
+      redirect: false,
+      email: form.email,
+      password: form.password
+    })
       .then(res => {
-        if (res.status !== 200) throw res;
-
-        localStorage.setItem("pbToken", res.data.pbToken)
-        
-        router.push("/class-list")
+        if (res.error) throw res.error
       })
       .catch(err => {
         props.setNotif({
           open: true,
           type: "danger",
-          message: err.data.message
+          message: err
         })
       })
       .finally(_ => {
@@ -56,13 +55,17 @@ export function SignIn(props) {
     })
   }
 
+  const loginGoogle = () => {
+    signIn("google", { redirect: false })
+  }
+
   return (
     <div className="form-container sign-in-container">
       <form onSubmit={handleLogin} id="login-form">
         <h1>Masuk</h1>
         <div className="social-container">
           <span><I icon={faFacebook} /></span>
-          <span><I icon={faGoogle} /></span>
+          <span onClick={loginGoogle}><I icon={faGoogle} /></span>
           <span><I icon={faGithub} /></span>
         </div>
         <span>atau masuk dengan email</span>

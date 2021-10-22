@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
+import { useSession } from 'next-auth/react'
 import Overlay from './Overlay';
 import { SignUp } from './SignUp';
 import { SignIn } from './SignIn';
@@ -13,22 +14,26 @@ const defaultNotif = {
   message: ""
 }
 
-export default function index() {
+export default function index(props) {
+  const { status } = useSession()
+
   const router = useRouter()
-  
+
   const [session, setSession] = useState('login')
   const [notif, setNotif] = useState(defaultNotif)
   const [tOut, setTOut] = useState(null)
-  const [loading, setLoading] = useState(false)
-
+  const [loading, setLoading] = useState(true)
+  
   useEffect(() => {
-    if (localStorage.getItem("pbToken")) {
+    if (status === "loading") return
+
+    if (status === "authenticated") {
       router.push("/class-list")
     } else {
       setLoading(false)
     }
-  }, [])
-  
+  }, [status])
+
   const handleNotif = (newNotif) => {
     setNotif(defaultNotif)
     setNotif(newNotif)

@@ -1,20 +1,17 @@
 import Img from 'next/image'
+import { signOut } from 'next-auth/react'
 import { useRouter } from 'next/router'
 
 export default function Drawer({
   isOpen = false,
   onClick = () => {}
-}) {
-  const router = useRouter()
-  
+}) {  
   const handleClick = (e) => {
     onClick()
   }
   
-  const handleLogout = () => {
-    localStorage.removeItem("pbToken")
-    
-    router.push("/")
+  const handleLogout = () => {    
+    signOut()
   }
 
   if (!isOpen) return <></>

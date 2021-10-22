@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { signIn } from 'next-auth/react'
 import DisablePage from 'libs/disabledPage'
 import { FontAwesomeIcon as I } from '@fortawesome/react-fontawesome'
 import {
@@ -8,7 +9,6 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import ButtonPrimary from 'components/Button/Primary'
 import { POST } from 'libs/request'
-import { useRouter } from 'next/router'
 
 const defaultForm = {
   name: "",
@@ -17,8 +17,7 @@ const defaultForm = {
 }
 
 export function SignUp(props) {
-  const router = useRouter()
-  
+
   const [form, setForm] = useState(defaultForm)
   const [loading, setLoading] = useState(false)
 
@@ -30,15 +29,43 @@ export function SignUp(props) {
       .then(res => {
         if (res.status !== 201) throw res;
 
-        localStorage.setItem("pbToken", res.data.pbToken)
-        
-        router.push("/class-list")
+        return signIn("credentials", {
+          redirect: false,
+          email: form.email,
+          password: form.password
+        })
+      })
+      .catch(err => {
+        let message = err.data ? err.data.message : err.message
+
+        props.setNotif({
+          open: true,
+          type: 'danger',
+          message: message
+        })
+      })
+      .finally(_ => {
+        setForm(defaultForm)
+        setLoading(false)
+      })
+  }
+
+  const handleLoginGoogle = (e) => {
+    e.preventDefault()
+    setLoading(true)
+    signIn("credentials", {
+      redirect: false,
+      email: form.email,
+      password: form.password
+    })
+      .then(res => {
+        if (res.error) throw res.error
       })
       .catch(err => {
         props.setNotif({
           open: true,
           type: 'danger',
-          message: err.data.message
+          message: err.message
         })
       })
       .finally(_ => {
@@ -62,7 +89,7 @@ export function SignUp(props) {
       <form onSubmit={handleRegister} id="register-form">
         <h1>Buat Akun</h1>
         <div className="social-container">
-          <span><I icon={faFacebook} /></span>
+          <span onClick={handleLoginGoogle}><I icon={faFacebook} /></span>
           <span><I icon={faGoogle} /></span>
           <span><I icon={faGithub} /></span>
         </div>

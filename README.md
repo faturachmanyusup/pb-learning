@@ -37,10 +37,10 @@ You can see progress [here](https://pb-learning.vercel.app/)
   <tbody>
     <tr>
       <td><span>All File</span></td>
-      <td>79.56%</td>
-      <td>55.32%</td>
-      <td>59.65%</td>
-      <td>79.23%</td>
+      <td>76.35%</td>
+      <td>58.18%</td>
+      <td>54.84%</td>
+      <td>76.09%</td>
     </tr>
   </tbody>
 </table>
@@ -57,7 +57,7 @@ You can see progress [here](https://pb-learning.vercel.app/)
 </tr>
 </thead>
 	<td class="file medium" data-value="components"><span href="components/index.html">components</span></td>
-	<td data-value="55.56" class="pct medium">55.56%</td>
+	<td data-value="57.14" class="pct medium">57.14%</td>
 	<td data-value="25" class="pct low">25%</td>
 	<td data-value="25" class="pct low">25%</td>
 	<td data-value="50" class="pct medium">50%</td>
@@ -105,18 +105,18 @@ You can see progress [here](https://pb-learning.vercel.app/)
 	<td data-value="100" class="pct high">100%</td>
 	</tr>
 <tr>
-	<td class="file high" data-value="pages/class-list"><span href="pages/class-list/index.html">pages/class-list</span></td>
-	<td data-value="80" class="pct high">80%</td>
-	<td data-value="75" class="pct medium">75%</td>
+	<td class="file medium" data-value="pages/class-list"><span href="pages/class-list/index.html">pages/class-list</span></td>
+	<td data-value="76.47" class="pct medium">76.47%</td>
+	<td data-value="66.67" class="pct medium">66.67%</td>
 	<td data-value="50" class="pct medium">50%</td>
-	<td data-value="78.57" class="pct medium">78.57%</td>
+	<td data-value="80" class="pct high">80%</td>
 	</tr>
 <tr>
 	<td class="file high" data-value="pages/login"><span href="pages/login/index.html">pages/login</span></td>
-	<td data-value="91.55" class="pct high">91.55%</td>
-	<td data-value="80" class="pct high">80%</td>
-	<td data-value="87.5" class="pct high">87.5%</td>
-	<td data-value="92.65" class="pct high">92.65%</td>
+	<td data-value="84.15" class="pct high">84.15%</td>
+	<td data-value="81.25" class="pct high">81.25%</td>
+	<td data-value="72.41" class="pct medium">72.41%</td>
+	<td data-value="84.42" class="pct high">84.42%</td>
 	</tr>
 </tbody>
 </table>

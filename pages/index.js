@@ -84,8 +84,7 @@ const Home = ({ overview = [] }) => {
 };
 
 export async function getServerSideProps(context) {
-  const env = process.env.NODE_ENV
-  const baseUrl = config[env].url.base
+  const baseUrl = config.url.base
 
   const overview = await GET(baseUrl + "/api/general/count")
 
