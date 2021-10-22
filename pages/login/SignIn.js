@@ -8,7 +8,6 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import ButtonPrimary from 'components/Button/Primary'
 import DisablePage from 'libs/disabledPage'
-import { useRouter } from 'next/router'
 
 const defaultForm = {
   email: "",
@@ -16,8 +15,6 @@ const defaultForm = {
 }
 
 export function SignIn(props) {
-  const router = useRouter()
-
   const [form, setForm] = useState(defaultForm)
   const [loading, setLoading] = useState(false)
 
