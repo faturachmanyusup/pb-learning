@@ -1,10 +1,10 @@
 import NextAuth from "next-auth"
-import GithubProvider from "next-auth/providers/github"
 import GoogleProvider from "next-auth/providers/google"
 import CredentialsProvider from "next-auth/providers/credentials"
 import pg from "libs/pg"
 import bcrypt from "libs/bcrypt"
 import config from "config/config"
+import uuid from 'uuid'
 
 const handleGoogleAuth = async (user) => {
   try {
@@ -17,7 +17,7 @@ const handleGoogleAuth = async (user) => {
         data: {
           name: user.name,
           email: user.email,
-          password: bcrypt.hash(config.DEFAULT_PASSWORD)
+          password: bcrypt.hash(uuid.v4())
         }
       })
     }
