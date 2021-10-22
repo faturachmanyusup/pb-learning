@@ -71,8 +71,8 @@ export default NextAuth({
 
       return true
     },
-    async redirect({ baseUrl }) {
-      return baseUrl + "/class-list"
+    async redirect() {
+      return config.url.base + "/class-list"
     },
     async session({ session }) {
       return session
