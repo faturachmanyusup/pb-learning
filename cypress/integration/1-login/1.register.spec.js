@@ -1,5 +1,3 @@
-const uuid = require('uuid')
-
 /// <reference types="cypress" />
 
 context('Register', () => {
@@ -15,9 +13,9 @@ context('Register', () => {
 
     cy.location('pathname').should('include', 'login')
 
-    cy.get('#name-register').should('be.visible').type("Test")
-    cy.get('#email-register').should('be.visible').type(`test__${uuid.v4()}@email.com`)
-    cy.get('#password-register').should('be.visible').type("test")
+    cy.get('#name-register').should('be.visible').type("TEST")
+    cy.get('#email-register').should('be.visible').type("test@email.com")
+    cy.get('#password-register').should('be.visible').type("WILLBEDELETEDAFTERTEST")
     cy.get('#submit-register').should('be.visible').click()
 
     cy.wait('@register')
@@ -30,9 +28,9 @@ context('Register', () => {
 
     cy.location('pathname').should('include', 'login')
 
-    cy.get('#name-register').should('be.visible').type("Registered User")
-    cy.get('#email-register').should('be.visible').type("admin@email.com")
-    cy.get('#password-register').should('be.visible').type("INVALIDPASSWORDEITHER")
+    cy.get('#name-register').should('be.visible').type("TEST")
+    cy.get('#email-register').should('be.visible').type("test@email.com")
+    cy.get('#password-register').should('be.visible').type("WILLBEDELETEDAFTERTEST")
     cy.get('#submit-register').should('be.visible').click()
 
     cy.wait('@register')

@@ -26,8 +26,8 @@ context('Login', () => {
 
     cy.location('pathname').should('include', 'login')
 
-    cy.get('#email-login').should('be.visible').type("admin@email.com")
-    cy.get('#password-login').should('be.visible').type("admin")
+    cy.get('#email-login').should('be.visible').type("test@email.com")
+    cy.get('#password-login').should('be.visible').type("WILLBEDELETEDAFTERTEST")
     cy.get('#submit-login').should('be.visible').click()
 
     cy.wait('@login')

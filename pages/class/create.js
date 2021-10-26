@@ -87,7 +87,9 @@ const CreateClass = () => {
       schedules: schedules
     })
       .then(res => {
-        if (res.status !== 201) throw res
+        if (res.status !== 201) throw {
+          message: "Kesalahan saat membuat kelas"
+        }
 
         setClassInfo({ name: "", description: "" })
         setSchedules([])
@@ -111,6 +113,7 @@ const CreateClass = () => {
       .catch(err => {
         setAlert({
           open: true,
+          type: 'danger',
           message: err.message
         })
 
