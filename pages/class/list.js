@@ -43,7 +43,7 @@ const List = (props = {
                   <h3 className="sm:text-3xl text-3xl font-medium mb-2 text-gray-900">
                     Kelas yang dibuat
                   </h3>
-                  <div className="h-1 w-20 bg-indigo-500 rounded"></div>
+                  <div className="h-1 w-48 mt-3 bg-indigo-500 rounded"></div>
                 </div>
               </div>
               <div className="flex flex-wrap">
@@ -67,7 +67,7 @@ const List = (props = {
                   <h3 className="sm:text-3xl text-3xl font-medium mb-2 text-gray-900">
                     Kelas yang diikuti
                   </h3>
-                  <div className="h-1 w-20 bg-indigo-500 rounded"></div>
+                  <div className="h-1 w-48 mt-3 bg-indigo-500 rounded"></div>
                 </div>
               </div>
               <div className="flex flex-wrap">

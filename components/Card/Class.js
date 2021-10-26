@@ -6,7 +6,7 @@ export default function ClassCard(props = {
   description: "",
 }) {
   return (
-    <div className={`bg-white rounded-lg shadow-xl cursor-pointer ${props.className}`}>
+    <div className={`bg-white transform motion-safe:active:scale-98 rounded-lg shadow-xl cursor-pointer ${props.className}`}>
       <img className="md:h-28 rounded w-full object-cover object-center mb-4" src={props.image} />
       <div className="px-3 pb-4">
         <h3 className="mn:text-md sm:text-md md:h-5 tracking-widest text-indigo-500 text-xs font-medium">
