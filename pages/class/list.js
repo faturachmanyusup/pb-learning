@@ -36,50 +36,54 @@ const List = (props = {
       </Head>
       <Dashboard user={session.user}>
         <div className="max-w-screen-xl mx-auto flex flex-col mb-2">
-          <div className="text-gray-600 body-font px-5 sm:px-0 mn:px-0 mt-24 max-w-7x1">
-            <div className="flex flex-wrap w-full mb-2 py-0 px-4 sm:px-6 mn:px-6">
-              <div className="w-full">
-                <h3 className="sm:text-3xl text-3xl font-medium mb-2 text-gray-900">
-                  Kelas yang dibuat
-                </h3>
-                <div className="h-1 w-20 bg-indigo-500 rounded"></div>
+          {props.createdClasses.length > 0 && (
+            <div className="text-gray-600 body-font px-5 sm:px-0 mn:px-0 mt-24 max-w-7x1">
+              <div className="flex flex-wrap w-full mb-2 py-0 px-4 sm:px-6 mn:px-6">
+                <div className="w-full">
+                  <h3 className="sm:text-3xl text-3xl font-medium mb-2 text-gray-900">
+                    Kelas yang dibuat
+                  </h3>
+                  <div className="h-1 w-20 bg-indigo-500 rounded"></div>
+                </div>
+              </div>
+              <div className="flex flex-wrap">
+                {props.createdClasses.map((_class, idx) => (
+                  <div key={idx} className="md:w-1/5 p-6 sm:mx-4 mn:mx-4 mb-2">
+                    <ClassCard
+                      title={_class.name}
+                      label={_class.teacher.name}
+                      description={_class.description}
+                      image={`https://picsum.photos/750/500?random=${idx}`}
+                    />
+                  </div>
+                ))}
               </div>
             </div>
-            <div className="flex flex-wrap">
-              {props.createdClasses.map((_class, idx) => (
-                <div key={idx} className="md:w-1/5 p-6 sm:mx-4 mn:mx-4 mb-2">
-                  <ClassCard
-                    title={_class.name}
-                    label={_class.teacher.name}
-                    description={_class.description}
-                    image={`https://picsum.photos/750/500?random=${idx}`}
-                  />
+          )}
+          {props.joinedClasses.length > 0 && (
+            <div className="text-gray-600 body-font px-5 sm:px-0 mn:px-0 mt-20 mb-8 max-w-7x1">
+              <div className="flex flex-wrap w-full mb-2 py-0 px-4 sm:px-6 mn:px-6">
+                <div className="w-full">
+                  <h3 className="sm:text-3xl text-3xl font-medium mb-2 text-gray-900">
+                    Kelas yang diikuti
+                  </h3>
+                  <div className="h-1 w-20 bg-indigo-500 rounded"></div>
                 </div>
-              ))}
-            </div>
-          </div>
-          <div className="text-gray-600 body-font px-5 sm:px-0 mn:px-0 mt-20 mb-8 max-w-7x1">
-            <div className="flex flex-wrap w-full mb-2 py-0 px-4 sm:px-6 mn:px-6">
-              <div className="w-full">
-                <h3 className="sm:text-3xl text-3xl font-medium mb-2 text-gray-900">
-                  Kelas yang diikuti
-                </h3>
-                <div className="h-1 w-20 bg-indigo-500 rounded"></div>
+              </div>
+              <div className="flex flex-wrap">
+                {props.joinedClasses.map((_class, idx) => (
+                  <div key={idx} className="md:w-1/5 p-6 sm:mx-4 mn:mx-4 mb-2">
+                    <ClassCard
+                      title={_class.name}
+                      label={_class.teacher.name}
+                      description={_class.description}
+                      image={`https://picsum.photos/750/500?random=${idx + props.createdClasses.length}`}
+                    />
+                  </div>
+                ))}
               </div>
             </div>
-            <div className="flex flex-wrap">
-              {props.joinedClasses.map((_class, idx) => (
-                <div key={idx} className="md:w-1/5 p-6 sm:mx-4 mn:mx-4 mb-2">
-                  <ClassCard
-                    title={_class.name}
-                    label={_class.teacher.name}
-                    description={_class.description}
-                    image={`https://picsum.photos/750/500?random=${idx + props.createdClasses.length}`}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
+          )}
         </div>
       </Dashboard>
     </>
