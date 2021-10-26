@@ -28,7 +28,7 @@ export default function index(props) {
     if (status === "loading") return
 
     if (status === "authenticated") {
-      router.push("/class-list")
+      router.push("/class/list")
     } else {
       setLoading(false)
     }
@@ -75,6 +75,7 @@ export default function index(props) {
           type={notif.type}
           message={notif.message}
           onClick={closeAlert}
+          disappear={true}
         />
       </div>
     </>

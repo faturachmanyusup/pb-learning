@@ -21,7 +21,7 @@ context('Login', () => {
     cy.get('#login-form').should('be.visible')
   })
 
-  it('redirect to /class-list after login using valid email & password', () => {
+  it('redirect to /class/list after login using valid email & password', () => {
     cy.intercept('/api/auth/*').as('login')
 
     cy.location('pathname').should('include', 'login')
@@ -32,7 +32,7 @@ context('Login', () => {
 
     cy.wait('@login')
 
-    cy.location('pathname').should('include', 'class-list')
+    cy.location('pathname').should('include', 'class/list')
   })
 
   it('show danger notification after login using invalid email & password', () => {

@@ -17,6 +17,7 @@ const handleGoogleAuth = async (user) => {
         data: {
           name: user.name,
           email: user.email,
+          image: user.image,
           password: bcrypt.hash(uuidV4())
         }
       })
@@ -48,22 +49,22 @@ export default NextAuth({
           })
 
           if (!user) {
-            throw { message: "auth failed" }
+            throw { message: "Akun tidak ditemukan" }
           } else if (!bcrypt.compare(password, user.password)) {
-            throw { message: "auth failed" }
+            throw { message: "Email atau password salah" }
           }
 
           return user
         } catch (err) {
           throw {
-            message: "Email atau password salah"
+            message: err.message
           }
         }
       }
     })
   ],
   callbacks: {
-    async signIn({ user, account, profile }) {
+    async signIn({ user, account }) {
       if (account.provider === 'google') {
         return await handleGoogleAuth(user)
       }
@@ -71,10 +72,32 @@ export default NextAuth({
       return true
     },
     async redirect() {
-      return config.url.base + "/class-list"
+      return config.url.base + "/class/list"
+    },
+    async jwt({ token }) {
+      return token
     },
     async session({ session }) {
-      return session
-    }
+      const user = await pg.user.findUnique({
+        where: { email: session.user.email }
+      })
+
+      if (!user) {
+        throw {
+          message: "Email atau password salah"
+        }
+      }
+
+      return { 
+        ...session,
+        user: {
+          ...session.user,
+          id: user.id
+        }
+      }
+    },
+  },
+  jwt: {
+    secret: config.JWT_KEY,
   }
 })

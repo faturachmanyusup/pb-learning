@@ -12,9 +12,10 @@ model User {
   name       String
   email      String         @unique
   password   String
+  image      String         @default("")
   teaches    Class[]        @relation(name: "teaches")
-  createdAt  DateTime       @default(now())
-  updatedAt  DateTime       @default(now())
+  createdAt  DateTime       @db.Timestamptz() @default(now())
+  updatedAt  DateTime       @db.Timestamptz() @default(now())
   classes    ClassStudent[] @relation(name: "classes_joined")
   Attendance Attendance[]
   Answer     Answer[]
@@ -22,12 +23,13 @@ model User {
 
 model Class {
   id          Int            @id @default(autoincrement())
+  code        String         @unique @db.VarChar(9)
   teacherId   Int
   teacher     User           @relation(name: "teaches", fields: [teacherId], references: [id])
   name        String
   description String         @default("")
-  createdAt   DateTime       @default(now())
-  updatedAt   DateTime       @default(now())
+  createdAt   DateTime       @db.Timestamptz() @default(now())
+  updatedAt   DateTime       @db.Timestamptz() @default(now())
   students    ClassStudent[] @relation(name: "class_members")
   Schedule    Schedule[]
   Assignment  Assignment[]
@@ -39,16 +41,18 @@ model ClassStudent {
   student   User     @relation(name: "classes_joined", fields: [studentId], references: [id])
   classId   Int
   class     Class    @relation(name: "class_members", fields: [classId], references: [id])
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+  createdAt DateTime @db.Timestamptz() @default(now())
+  updatedAt DateTime @db.Timestamptz() @default(now())
 }
 
 model Schedule {
   id         Int          @id @default(autoincrement())
   classId    Int
   class      Class        @relation(fields: [classId], references: [id])
-  createdAt  DateTime     @default(now())
-  updatedAt  DateTime     @default(now())
+  date       DateTime     @db.Timestamptz()
+  notes      String
+  createdAt  DateTime     @db.Timestamptz() @default(now())
+  updatedAt  DateTime     @db.Timestamptz() @default(now())
   Attendance Attendance[]
 }
 
@@ -58,8 +62,8 @@ model Attendance {
   schedule   Schedule @relation(fields: [scheduleId], references: [id])
   userId     Int
   user       User     @relation(fields: [userId], references: [id])
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @default(now())
+  createdAt  DateTime @db.Timestamptz() @default(now())
+  updatedAt  DateTime @db.Timestamptz() @default(now())
 }
 
 model Assignment {
@@ -68,8 +72,8 @@ model Assignment {
   class       Class    @relation(fields: [classId], references: [id])
   name        String
   description String   @default("")
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @default(now())
+  createdAt   DateTime @db.Timestamptz() @default(now())
+  updatedAt   DateTime @db.Timestamptz() @default(now())
   Answer      Answer[]
 }
 
@@ -81,6 +85,6 @@ model Answer {
   user         User       @relation(fields: [userId], references: [id])
   description  String     @default("")
   grade        Float      @default(0.00)
-  createdAt    DateTime   @default(now())
-  updatedAt    DateTime   @default(now())
+  createdAt    DateTime   @db.Timestamptz() @default(now())
+  updatedAt    DateTime   @db.Timestamptz() @default(now())
 }

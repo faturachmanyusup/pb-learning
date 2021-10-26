@@ -1,10 +1,11 @@
 const defaultHeader = {
-  'Content-Type': 'application/json'
+  'Content-Type': 'application/json',
+  'authorization': 'Bearer '
 }
 
 export const GET = (url = "", header = {}) => {
   let status = 500
-  
+
   return fetch(url, {
     method: "GET",
     headers: {
@@ -12,24 +13,24 @@ export const GET = (url = "", header = {}) => {
       ...header
     }
   })
-  .then(res => {
-    status = res.status
-    return res.json()
-  })
-  .then(res => {
-    return {
-      status: status,
-      data: res
-    }
-  })
-  .catch(err => {
-    throw err
-  })
+    .then(res => {
+      status = res.status
+      return res.json()
+    })
+    .then(res => {
+      return {
+        status: status,
+        data: res
+      }
+    })
+    .catch(err => {
+      throw err
+    })
 }
 
 export const POST = (url = "", body = {}, header = {}) => {
   let status = 500
-  
+
   return fetch(url, {
     method: "POST",
     headers: {
@@ -38,17 +39,17 @@ export const POST = (url = "", body = {}, header = {}) => {
     },
     body: JSON.stringify(body)
   })
-  .then(res => {
-    status = res.status
-    return res.json()
-  })
-  .then(res => {
-    return {
-      status: status,
-      data: res
-    }
-  })
-  .catch(err => {
-    throw err
-  })
+    .then(res => {
+      status = res.status
+      return res.json()
+    })
+    .then(res => {
+      return {
+        status: status,
+        data: res
+      }
+    })
+    .catch(err => {
+      throw err
+    })
 }

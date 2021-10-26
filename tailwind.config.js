@@ -4,23 +4,20 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     screens: {
-      'mn': '320px',
-      'sm': '480px',
-      'md': '768px',
-      'lg': '1024px',
-      'xl': '1280px',
-      '2xl': '1536px',
+      "mn": { min: "320px", max: "479px" },
+      "sm": { min: "480px", max: "767px" },
+      "md": "768px",
+      "lg": "1024px",
+      "xl": "1280px",
+      "2xl": "1536px",
     },
     boxShadow: {
       sm: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
-      DEFAULT:
-        "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
-      md:
-        "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
-      lg:
-        "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-      xl:
-        "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+      DEFAULT: "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
+      md: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+      lg: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+      xl: "0 14px 28px rgba(0, 0, 0, 0.15), 0 10px 10px rgba(0, 0, 0, 0.04)",
+      '2xl': "0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)",
       t: "0 -1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
       orange: "0px 20px 20px -15px rgba(245,56,56,0.81) ",
       "orange-md": "0px 20px 40px -15px rgba(245,56,56,0.81) ",
@@ -52,7 +49,10 @@ module.exports = {
         200: "#F6F5F7",
         400: "#AFB5C0",
         500: "#DDDDDD",
+        600: "#4B5563",
         900: "#111827",
+        lighter: "#F3F7F9",
+        darker: "#504D4D"
       },
       red: {
         400: "#F56565",

@@ -15,6 +15,13 @@ export default function errHandler(res, err) {
     })
   }
 
+  else if (err.message === "unauthenticated") {
+    res.status(401).json({
+      name: "Unauthenticated",
+      message: "Anda harus login terlebih dahulu"
+    })
+  }
+ 
   else if (err.message.includes("Unique constraint failed on the fields: (`email`)")) {
     res.status(400).json({
       name: "Bad request",

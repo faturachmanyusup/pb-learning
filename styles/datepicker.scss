@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'react-nice-dates/src/style.scss';
+
+$nice-dates-color-gray-dark: #333;
+$nice-dates-color-gray: #999;
+$nice-dates-color-gray-light: #ddd;
+$nice-dates-color-accent: $nice-dates-color-gray-dark;
+$nice-dates-font-size-small: 12px;
+$nice-dates-font-size-base: 14px;
+$nice-dates-font-size-big: 16px;
+
+.nice-dates-day_month {
+  display: none !important;
+}
+
+.nice-dates-popover {
+  width: 17.5% !important;
+
+  span.nice-dates-day {
+    height: 30px !important;
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 60% !important;
+  }
+  
+  @media screen and (min-width: 768px) and (max-width: 1024px){
+    width: 73% !important;
+  }
+}
+
+.nice-dates-grid {
+  height: 12rem !important;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  background: none;
+  display: none;
+}

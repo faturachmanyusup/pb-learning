@@ -10,7 +10,7 @@ context('Register', () => {
     cy.wait(2000)
   })
 
-  it('redirect to /class-list after register using valid email & password', () => {
+  it('redirect to /class/list after register using valid email & password', () => {
     cy.intercept('/api/user/register').as('register')
 
     cy.location('pathname').should('include', 'login')
@@ -22,7 +22,7 @@ context('Register', () => {
 
     cy.wait('@register')
 
-    cy.location('pathname').should('include', 'class-list')
+    cy.location('pathname').should('include', 'class/list')
   })
 
   it('show danger notification after register using registered email', () => {

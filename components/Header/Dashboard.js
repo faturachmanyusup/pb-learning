@@ -2,12 +2,20 @@ import Link from "next/link"
 import Img from 'next/image'
 import { useRouter } from 'next/router'
 import ModalAdd from "components/Modal/HeaderAdd"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const Header = ({
+  user = {},
   toggleDrawer = () => { }
 }) => {
   const router = useRouter()
+
+  const { page } = router.query
+  const pathname = router.pathname
+
+  useEffect(() => {
+    setModalAddOpen(false)
+  }, [page, pathname])
 
   const [modalAddOpen, setModalAddOpen] = useState(false)
 
@@ -25,13 +33,13 @@ const Header = ({
             />
           </div>
           <Link href="/">
-            <a>
+            <div>
               <Img src="/assets/e-classes-logo.png" width="100" height="38" className="w-auto cursor-pointer" />
-            </a>
+            </div>
           </Link>
         </div>
         <div className="h-11 col-start-11 col-end-11 font-medium flex justify-end items-center lg:pb-1">
-          <div className="self-start w-auto mr-6 mt-0.3">
+          <div className="self-start w-auto mr-6 mn:mr-4 mt-0.3">
             <div className="flex flex-row justify-end mb-3">
               <Img
                 src="/assets/icons/plus-lg.svg"
@@ -43,8 +51,13 @@ const Header = ({
             </div>
             <ModalAdd open={modalAddOpen} />
           </div>
-          <div className="self-center rounded-full h-8 mb-0.3 w-8 flex items-center justify-center border-2 border-black-600 cursor-pointer">
-            <Img src="/assets/icons/person-fill.svg" width="27" height="27" />
+          <div className="self-center rounded-full h-8 w-8 flex items-center justify-center border-2 border-black-600 cursor-pointer sm:mb-0.3 mn:mb-0.3">
+            <img
+              src={user.image || "/assets/icons/person-fill.svg"}
+              width="27"
+              height="27"
+              className="rounded-full"
+            />
           </div>
         </div>
       </nav>
