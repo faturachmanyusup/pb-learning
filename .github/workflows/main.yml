@@ -1,6 +1,6 @@
 name: Node.js CI
 
-on: [deployment_status]
+on: [push]
 
 jobs:
   cypress-run:
