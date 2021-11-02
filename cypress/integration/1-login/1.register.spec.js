@@ -2,7 +2,7 @@
 
 context('Register', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/login')
+    cy.visit(Cypress.env('baseUrl') + '/login')
     cy.get('#set-session-register').should('be.visible').click()
 
     cy.wait(2000)
@@ -19,6 +19,7 @@ context('Register', () => {
     cy.get('#submit-register').should('be.visible').click()
 
     cy.wait('@register')
+    cy.wait(8000)
 
     cy.location('pathname').should('include', 'class/list')
   })

@@ -22,5 +22,7 @@ module.exports = (on, config) => {
 
   require('@cypress/code-coverage/task')(on, config)
 
+  config.env.baseUrl = process.env.CYPRESS_BASE_URL || 'localhost:3000'
+
   return config
 }

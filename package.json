@@ -6,6 +6,7 @@
     "build": "next build",
     "start": "next start",
     "test": "cypress open",
+    "posttest": "node helpers/posttest.js",
     "db-migrate": "npx prisma db push",
     "test-coverage": "npx nyc report --reporter=text",
     "update-coverage": "node helpers/updateCoverage.js"

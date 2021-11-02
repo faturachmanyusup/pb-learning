@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+const { PrismaClient } = require('@prisma/client');
 
 let pg;
 
@@ -11,4 +11,4 @@ if (process.env.NODE_ENV === 'production') {
   pg = global.pg;
 }
 
-export default pg;
+module.exports = pg;

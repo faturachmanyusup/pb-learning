@@ -2,7 +2,7 @@
 
 context('Login', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/login')
+    cy.visit(Cypress.env('baseUrl') + '/login')
   })
 
   it('change session to register and back', () => {
