@@ -72,7 +72,7 @@ button.button-primary:focus {
 
 button.button-primary.button-outline {
   background-color: transparent;
-  border-color: #FFFFFF;
+  border: 1px solid #FFFFFF;
 }
 
 button.button-blue {
@@ -117,6 +117,12 @@ button.button-green:focus {
   outline: none;
 }
 
+button.sm {
+  padding: 3px 7px;
+  border-radius: 25px;
+  text-transform: none;
+}
+
 .loading {
   display: inline-block;
   position: relative;
@@ -145,6 +151,17 @@ button.button-green:focus {
 
 .loading div:nth-child(3) {
   animation-delay: -0.15s;
+}
+
+.text-warning {
+  display: block;
+  font-size: 12px;
+  color: #FF4B2B;
+  width: 100px;
+  height: 16px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 @keyframes loading {

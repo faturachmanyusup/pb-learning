@@ -1,6 +1,6 @@
 import ErrorPage from 'next/error'
 
-export default function Error() {
+export default function Error(props) {
   return (
     <ErrorPage
       statusCode={404}

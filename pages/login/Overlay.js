@@ -9,7 +9,6 @@ export default function Overlay(props) {
           <p>Masuk menggunakan akun yang sudah anda miliki</p>
           <ButtonOutline
             id="set-session-login"
-            className="ghost"
             onClick={() => props.setSession('login')}
           >
             Masuk
@@ -20,7 +19,6 @@ export default function Overlay(props) {
           <p>Isi data diri dan mulai perjalanan bersama kami</p>
           <ButtonOutline
             id="set-session-register"
-            className="ghost"
             onClick={() => props.setSession('register')}
           >
             Daftar

@@ -1,11 +1,12 @@
 import { useRouter } from "next/router"
 import Drawer from "components/Drawer"
 import { useEffect, useState } from "react"
-import HeaderDashboard from "components/Header/Dashboard"
+import HeaderClass from "components/Header/Class"
 
-const Dashboard = (props = {
+const Class = (props = {
   children: <></>,
-  user: {}
+  user: {},
+  class: {}
 }) => {
   const router = useRouter()
 
@@ -24,13 +25,13 @@ const Dashboard = (props = {
 
   return (
     <>
-      <HeaderDashboard toggleDrawer={openDrawer} user={props.user} />
+      <HeaderClass toggleDrawer={openDrawer} class={props.class} user={props.user} />
       <Drawer isOpen={drawerOpen} onClick={() => setDrawerOpen(false)} />
-      <div className="max-w-screen-xl mx-auto flex flex-col mt-24 mb-2 px-7">
+      <div className="max-w-screen-xl mx-auto flex flex-col mt-24 mb-2 px-5">
         {props.children}
       </div>
     </>
   )
 }
 
-export default Dashboard
+export default Class

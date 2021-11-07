@@ -1,8 +1,8 @@
-import 'styles/login.scss'
-import 'styles/tailwind.css'
-import 'styles/drawer.scss'
-import 'styles/header.scss'
-import 'styles/datepicker.scss'
+import 'public/styles/login.scss'
+import 'public/styles/tailwind.scss'
+import 'public/styles/drawer.scss'
+import 'public/styles/header.scss'
+import 'public/styles/datepicker.scss'
 import 'react-nice-dates/build/style.css'
 
 import { SessionProvider } from 'next-auth/react'

@@ -85,6 +85,8 @@ const CreateClass = () => {
     POST("/api/class/create", {
       newClass: classInfo,
       schedules: schedules
+    }, {
+      session: JSON.stringify(session)
     })
       .then(res => {
         if (res.status !== 201) throw {
@@ -129,8 +131,8 @@ const CreateClass = () => {
         <meta property="og:title" key="create-class" />
       </Head>
       <Dashboard user={session.user}>
-        <div className="max-w-screen-lg mx-auto flex flex-col items-center mb-2">
-          <div className="md:sticky md:top-4 md:z-30 sm:mt-20 mn:mt-20">
+        <div className="flex lg:-mt-20 flex-col items-center mb-2 lg:w-4/6 lg:mx-auto">
+          <div className="md:sticky md:top-4 md:z-30">
             <span className="text-2xl font-bold">Buat Kelas</span>
           </div>
           <form

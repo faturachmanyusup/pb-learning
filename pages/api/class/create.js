@@ -1,5 +1,4 @@
 import errHandler from "libs/errHandler"
-import { getSession } from "next-auth/react"
 import pg from "libs/pg";
 import generateCode from "helpers/generateCode";
 
@@ -9,7 +8,7 @@ export default async function create(req, res) {
       throw { message: "invalid method", onlyAccepted: "POST" }
     }
 
-    const session = await getSession({ req })
+    const session = JSON.parse(req.headers.session)
 
     if (!session.user?.id) {
       throw { message: "unauthenticated" }

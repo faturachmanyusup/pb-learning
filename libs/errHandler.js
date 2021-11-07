@@ -28,7 +28,28 @@ export default function errHandler(res, err) {
       message: "Email sudah terdaftar"
     })
   }
-  
+
+  else if (err.message === "empty class code") {
+    res.status(400).json({
+      name: "Bad request",
+      message: "Code kelas tidak boleh kosong"
+    })
+  }
+
+  else if (err.message === "class not found") {
+    res.status(404).json({
+      name: "Not Found",
+      message: "Kelas tidak ditemukan"
+    })
+  }
+
+  else if (err.message === "already joined before") {
+    res.status(400).json({
+      name: "Bad request",
+      message: "sudah pernah bergabung sebelumnya"
+    })
+  }
+
   else {
     res.status(500).json({
       code: 500,

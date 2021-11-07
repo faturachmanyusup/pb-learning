@@ -1,7 +1,8 @@
 const ButtonPrimary = (props) => {
   const color = props.color || "primary"
+  const size= props.size || "md"
 
-  let className = `button-${color} flex flex-row items-center justify-center `
+  let className = `button-${color} ${size} flex flex-row items-center justify-center `
   className = className + (props.className || "")
 
   return (

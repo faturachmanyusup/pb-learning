@@ -4,9 +4,9 @@ import { useRouter } from 'next/router'
 import ModalAdd from "components/Modal/HeaderAdd"
 import { useEffect, useState } from "react"
 
-const Header = ({
-  user = {},
-  toggleDrawer = () => { }
+const Header = (props = {
+  user: {},
+  toggleDrawer: () => { }
 }) => {
   const router = useRouter()
 
@@ -29,7 +29,7 @@ const Header = ({
               width="30"
               height="30"
               className="cursor-pointer"
-              onClick={toggleDrawer}
+              onClick={props.toggleDrawer}
             />
           </div>
           <Link href="/">
@@ -53,7 +53,7 @@ const Header = ({
           </div>
           <div className="self-center rounded-full h-8 w-8 flex items-center justify-center border-2 border-black-600 cursor-pointer sm:mb-0.3 mn:mb-0.3">
             <img
-              src={user.image || "/assets/icons/person-fill.svg"}
+              src={props.user?.image || "/assets/icons/person-fill.svg"}
               width="27"
               height="27"
               className="rounded-full"

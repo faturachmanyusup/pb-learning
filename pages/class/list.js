@@ -1,7 +1,5 @@
 import Head from "next/head"
-import { useEffect, useState } from "react"
-import { useRouter } from "next/router"
-import { useSession, getSession } from 'next-auth/react'
+import { getSession } from 'next-auth/react'
 import Dashboard from "components/Layout/Dashboard"
 import ClassCard from "components/Card/Class"
 import { GET } from "libs/request"
@@ -9,24 +7,9 @@ import config from "config/config"
 
 const List = (props = {
   joinedClasses: [],
-  createdClasses: []
+  createdClasses: [],
+  session: {}
 }) => {
-  const router = useRouter()
-  const { data: session, status } = useSession()
-
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    if (status === "loading") return
-
-    if (status === "unauthenticated") {
-      router.push("/login")
-    } else {
-      setLoading(false)
-    }
-  }, [status])
-  
-  if (loading) return <></>
 
   return (
     <>
@@ -34,11 +17,11 @@ const List = (props = {
         <title>PB-Learning - Semua Kelas</title>
         <meta property="og:title" key="create-class" />
       </Head>
-      <Dashboard user={session.user}>
-        <div className="max-w-screen-xl mx-auto flex flex-col mb-2">
+      <Dashboard user={props.session.user}>
+        <div>
           {props.createdClasses.length > 0 && (
-            <div className="text-gray-600 body-font px-5 sm:px-0 mn:px-0 mt-24 max-w-7x1">
-              <div className="flex flex-wrap w-full mb-2 py-0 px-4 sm:px-6 mn:px-6">
+            <div className="text-gray-600 body-font sm:px-0 mn:px-0 max-w-7x1">
+              <div className="flex flex-wrap w-full mb-2 py-0 sm:px-6 mn:px-6">
                 <div className="w-full">
                   <h3 className="sm:text-3xl text-3xl font-medium mb-2 text-gray-900">
                     Kelas yang dibuat
@@ -51,9 +34,10 @@ const List = (props = {
                   <div key={idx} className="md:w-1/5 p-6 sm:mx-4 mn:mx-4 mb-2">
                     <ClassCard
                       title={_class.name}
-                      label={_class.teacher.name}
+                      label={_class.code}
                       description={_class.description}
                       image={`https://picsum.photos/750/500?random=${idx}`}
+                      classCode={_class.code}
                     />
                   </div>
                 ))}
@@ -61,8 +45,8 @@ const List = (props = {
             </div>
           )}
           {props.joinedClasses.length > 0 && (
-            <div className="text-gray-600 body-font px-5 sm:px-0 mn:px-0 mt-20 mb-8 max-w-7x1">
-              <div className="flex flex-wrap w-full mb-2 py-0 px-4 sm:px-6 mn:px-6">
+            <div className="text-gray-600 body-font sm:px-0 mn:px-0 mt-20 mb-8 max-w-7x1">
+              <div className="flex flex-wrap w-full mb-2 py-0 sm:px-6 mn:px-6">
                 <div className="w-full">
                   <h3 className="sm:text-3xl text-3xl font-medium mb-2 text-gray-900">
                     Kelas yang diikuti
@@ -78,6 +62,7 @@ const List = (props = {
                       label={_class.teacher.name}
                       description={_class.description}
                       image={`https://picsum.photos/750/500?random=${idx + props.createdClasses.length}`}
+                      classCode={_class.code}
                     />
                   </div>
                 ))}
@@ -93,7 +78,16 @@ const List = (props = {
 export async function getServerSideProps(context) {
   try {
     const session = await getSession(context)
-    
+
+    if (!session) {
+      return {
+        redirect: {
+          permanent: false,
+          destination: '/login'
+        }
+      }
+    }
+
     const res = await GET(config.url.base + "/api/class/get-all", {
       session: JSON.stringify(session)
     })
@@ -103,14 +97,16 @@ export async function getServerSideProps(context) {
     return {
       props: {
         createdClasses: res.data.createdClasses,
-        joinedClasses: res.data.joinedClasses
+        joinedClasses: res.data.joinedClasses,
+        session: session
       }
     }
   } catch (err) {
     return {
       props: {
         createdClasses: [],
-        joinedClasses: []
+        joinedClasses: [],
+        session: {}
       }
     }
   }

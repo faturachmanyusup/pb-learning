@@ -1,7 +1,8 @@
+import { getSession } from "next-auth/react"
 import errHandler from "libs/errHandler"
-import pg from "libs/pg"
+import pg from "libs/pg";
 
-export default async function getAll(req, res) {
+export default async function get(req, res) {
   try {
     if (req.method.toUpperCase() !== 'GET') {
       throw { message: "invalid method", onlyAccepted: "GET" }
@@ -13,10 +14,14 @@ export default async function getAll(req, res) {
       throw { message: "unauthenticated" }
     }
 
-    const createdClasses = await pg.class.findMany({
-      where: {
-        teacherId: session.user.id
-      },
+    if (!req.query.code) {
+      throw { message: "empty class code" }
+    }
+
+    const code = req.query.code
+
+    const classFound = await pg.class.findUnique({
+      where: { code },
       include: {
         teacher: {
           select: {
@@ -28,29 +33,13 @@ export default async function getAll(req, res) {
       }
     })
 
-    const joinedClasses = await pg.class.findMany({
-      where: {
-        students: {
-          some: {
-            studentId: session.user.id
-          }
-        }
-      },
-      include: {
-        teacher: {
-          select: {
-            name: true,
-            email: true,
-            image: true
-          }
-        }
-      }
-    })
+    if (!classFound) {
+      throw { message: "class not found" }
+    }
 
     res.status(200).json({
       message: "Success",
-      createdClasses,
-      joinedClasses
+      class: classFound
     })
   } catch (err) {
     errHandler(res, err)
