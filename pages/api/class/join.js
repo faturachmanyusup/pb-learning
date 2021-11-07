@@ -24,6 +24,17 @@ export default async function join(req, res) {
       throw { message: "class not found" }
     }
 
+    const asTeacher = await pg.class.findFirst({
+      where: {
+        code: code,
+        teacherId: session.user.id
+      }
+    })
+
+    if (asTeacher) {
+      throw { message: "restrict user join own class" }
+    }
+
     const alreadyJoined = await pg.classStudent.findFirst({
       where: {
         classId: _class.id,

@@ -9,7 +9,7 @@ const HeaderAdd = ({ open = false }) => {
   if (!open) return <></>
 
   const router = useRouter()
-  
+
   const [loading, setLoading] = useState(false)
   const [showForm, setShowForm] = useState(false)
   const [formText, setFormText] = useState("")
@@ -27,7 +27,7 @@ const HeaderAdd = ({ open = false }) => {
 
     if (!formText) return
 
-    setError({ error: false })
+    setError({ ...error, message: "" })
     setLoading(true)
 
     POST(config.url.base + "/api/class/join", {
@@ -63,7 +63,7 @@ const HeaderAdd = ({ open = false }) => {
               <div className="w-28">
                 <input
                   autoFocus
-                  className={`px-1 ${loading ? 'w-20' : 'w-full'} border border-black-500 focus:outline-none`}
+                  className={`px-1 ${loading ? 'w-24' : 'w-full'} border border-black-500 focus:outline-none`}
                   placeholder="kode kelas"
                   value={formText}
                   onChange={(e) => setFormText(e.target.value)}
@@ -86,7 +86,6 @@ const HeaderAdd = ({ open = false }) => {
             <ButtonPrimary
               size="sm"
               className="mr-1"
-              loading={String(loading)}
               onClick={toggleForm}
             >
               <span className="text-xs font-medium">

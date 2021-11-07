@@ -46,7 +46,14 @@ export default function errHandler(res, err) {
   else if (err.message === "already joined before") {
     res.status(400).json({
       name: "Bad request",
-      message: "sudah pernah bergabung sebelumnya"
+      message: "Sudah pernah bergabung sebelumnya"
+    })
+  }
+
+  else if (err.message === "restrict user join own class") {
+    res.status(400).json({
+      name: "Bad request",
+      message: "Guru tidak dapat bergabung sebagai murid"
     })
   }
 
