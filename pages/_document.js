@@ -5,6 +5,7 @@ class MyDocument extends Document {
     return (
       <Html lang="id" a>
         <Head>
+          <meta name="google-site-verification" content="ukQV3uEuJQsAMgot1NKex8GlljENmVz__jczChQUmUw" />
           <meta name='application-name' content='PB-Learning' />
           <meta name='apple-mobile-web-app-capable' content='yes' />
           <meta name='apple-mobile-web-app-status-bar-style' content='default' />
