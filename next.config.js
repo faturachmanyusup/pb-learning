@@ -5,7 +5,7 @@ const withPWA = require('next-pwa')
 
 module.exports = withBundleAnalyzer(withPWA({
   pwa: {
-    disable: process.env.PWA === 'TRUE',
+    disable: process.env.PWA === 'DISABLE',
     register: true,
     dest: 'public'
   }
