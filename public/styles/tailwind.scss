@@ -1,8 +1,15 @@
 @tailwind base;
 @tailwind components;
 
+@font-face {
+  font-family: "Rubik", sans-serif;
+  src: url('/public/fonts/Rubik-Regular.ttf');
+  font-display: optional;
+}
+
 html {
   font-family: "Rubik", sans-serif;
+  font-display: optional;
 }
 
 .animation-hover:after {

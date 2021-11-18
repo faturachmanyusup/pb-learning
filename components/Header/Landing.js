@@ -14,7 +14,13 @@ const Header = ({
         <div className="col-start-1 col-end-2 flex items-center">
           <Link href="/">
             <a>
-              <Img src="/assets/e-classes-logo.png" width="100" height="38" className="w-auto cursor-pointer" />
+              <Img
+                src="/assets/e-classes-logo.png"
+                alt="pb-learning"
+                width="100"
+                height="38"
+                className="w-auto cursor-pointer"
+              />
             </a>
           </Link>
         </div>

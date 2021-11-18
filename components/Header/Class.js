@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import Img from 'next/image'
-import { useRouter } from 'next/router'
 
 const Class = (props = {
   user: {},

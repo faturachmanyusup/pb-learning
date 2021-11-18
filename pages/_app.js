@@ -2,6 +2,7 @@ import 'public/styles/login.scss'
 import 'public/styles/tailwind.scss'
 import 'public/styles/drawer.scss'
 import 'public/styles/header.scss'
+import 'public/styles/class.scss'
 import 'public/styles/datepicker.scss'
 import 'react-nice-dates/build/style.css'
 

@@ -61,7 +61,9 @@ export default function index(props) {
       <Head>
         <title>PB-Learning - {fmtSession}</title>
         <meta property="og:title" key="login" />
-        <meta name="viewport" content="width=device-width, user-scalable=no" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="description" content="Masuk atau buat akun" />
+        <meta name="theme-color" content="#FF4B2B"/>
       </Head>
       <Header session={session} setSession={(v) => setSession(v)} />
       <div className="body-login">

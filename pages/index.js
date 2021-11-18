@@ -18,7 +18,9 @@ const Home = ({ overview = [] }) => {
       <Head>
         <title>PB-Learning</title>
         <meta property="og:title" key="login" />
-        <meta name="viewport" content="width=device-width, user-scalable=no" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="description" content="Belajar kapanpun dan di manapun dengan PB Learning" />
+        <meta name="theme-color" content="#FF4B2B"/>
       </Head>
       <Header />
       <div className="max-w-screen-xl mt-20 px-10 xl:px-16 mx-auto">
@@ -31,16 +33,14 @@ const Home = ({ overview = [] }) => {
             <p className="text-black-500 mt-2 mb-6 mn:mb-8">
               PB-Learning hadir untuk membantu mereka yang terkendala jarak
               dalam kegiatan belajar mengajar.
-              {/* PB Learning adalah platform lengkap untuk kegiatan belajar mengajar Anda.
-              Platform yang aman dan mudah digunakan.
-              Membantu pengajar mengelola, mengukur, dan memperkaya pengalaman belajar. */}
             </p>
             <ButtonPrimary onClick={handleStart}>Mulai</ButtonPrimary>
           </div>
           <div className="w-full mn:h-8">
             <Image
               src="/assets/e-learning-illustration.jpg"
-              alt="Illustrasi"
+              priority
+              alt="illustrasi"
               quality={100}
               width={612}
               height={383}
@@ -52,7 +52,7 @@ const Home = ({ overview = [] }) => {
           <div
             className="
             rounded-lg w-full grid grid-flow-row grid-cols-1 py-9 divide-y-2 divide-gray-100 bg-white-500 z-10
-            md:grid-flow-row md:grid-cols-3 md:divide-y-0 md:divide-x-2 
+            md:grid-flow-row md:grid-cols-3 md:divide-y-0 md:divide-x-0 
           "
           >
             {overview.map((count, index) => (
@@ -65,7 +65,7 @@ const Home = ({ overview = [] }) => {
               >
                 <div className="flex mx-auto w-40 md:w-auto mn:w-full">
                   <div className="flex items-center justify-center bg-orange-100 w-12 h-12 mr-6 rounded-full">
-                    <img src={count.icon} className="h-6 w-6" />
+                    <img alt={count.name} src={count.icon} className="h-6 w-6" />
                   </div>
                   <div className="flex flex-col mn:flex-row mn:items-center mn:justify-between">
                     <p className="text-xl text-black-600 font-bold mn:text-lg mn:mr-3">

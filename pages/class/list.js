@@ -16,6 +16,8 @@ const List = (props = {
       <Head>
         <title>PB-Learning - Semua Kelas</title>
         <meta property="og:title" key="create-class" />
+        <meta name="description" content="Semua kelas" />
+        <meta name="theme-color" content="#FF4B2B"/>
       </Head>
       <Dashboard user={props.session.user}>
         <div>

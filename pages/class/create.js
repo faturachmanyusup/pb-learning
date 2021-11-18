@@ -79,6 +79,10 @@ const CreateClass = () => {
     setSchedules(temp)
   }
 
+  const goBack = () => {
+    router.back();
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
 
@@ -129,6 +133,8 @@ const CreateClass = () => {
       <Head>
         <title>PB-Learning - Buat Kelas Baru</title>
         <meta property="og:title" key="create-class" />
+        <meta name="description" content="Buat kelas baru" />
+        <meta name="theme-color" content="#FF4B2B"/>
       </Head>
       <Dashboard user={session.user}>
         <div className="flex lg:-mt-20 flex-col items-center mb-2 lg:w-4/6 lg:mx-auto">
@@ -271,7 +277,7 @@ const CreateClass = () => {
             </Accordion>
             <div className="-mx-3 md:flex mb-2 mt-8 justify-end">
               <div className="flex flex-row px-3">
-                <ButtonPrimary className="mn:h-8 mn:h-12 mn:w-28">
+                <ButtonPrimary type="button" onClick={goBack} className="mn:h-8 mn:h-12 mn:w-28">
                   Kembali
                 </ButtonPrimary>
                 <ButtonPrimary

@@ -47,6 +47,7 @@ module.exports = {
       gray: {
         100: "#EEEFF2",
         200: "#F6F5F7",
+        300: "#e0e0e0",
         400: "#AFB5C0",
         500: "#DDDDDD",
         600: "#4B5563",
@@ -99,7 +100,10 @@ module.exports = {
       }),
       margin: {
         "0.3": "0.3rem"
-      }
+      },
+      backgroundImage: {
+        'forum-class': "url('https://gstatic.com/classroom/themes/img_cinema.jpg')",
+      },
     },
   },
   variants: {
