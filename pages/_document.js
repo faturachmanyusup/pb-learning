@@ -29,17 +29,17 @@ class MyDocument extends Document {
           <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500' />
 
           <meta name='twitter:card' content='summary' />
-          <meta name='twitter:url' content='https://https://pb-learning.vercel.app' />
+          <meta name='twitter:url' content='https://pb-learning.vercel.app' />
           <meta name='twitter:title' content='PB-Learning' />
           <meta name='twitter:description' content='Belajar kapanpun dan di manapun dengan PB Learning' />
-          <meta name='twitter:image' content='https://https://pb-learning.vercel.app/icons/android-chrome-192x192.png' />
+          <meta name='twitter:image' content='https://pb-learning.vercel.app/icons/android-chrome-192x192.png' />
           <meta name='twitter:creator' content='@finkd' />
           <meta property='og:type' content='website' />
           <meta property='og:title' content='PB-Learning' />
           <meta property='og:description' content='Belajar kapanpun dan di manapun dengan PB Learning' />
           <meta property='og:site_name' content='PB-Learning' />
-          <meta property='og:url' content='https://https://pb-learning.vercel.app' />
-          <meta property='og:image' content='https://https://pb-learning.vercel.app/icons/apple-touch-icon.png' />
+          <meta property='og:url' content='https://pb-learning.vercel.app' />
+          <meta property='og:image' content='https://pb-learning.vercel.app/icons/apple-touch-icon.png' />
         </Head>
         <body>
           <Main />
