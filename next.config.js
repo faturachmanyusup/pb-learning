@@ -1,12 +1,9 @@
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-})
 const withPWA = require('next-pwa')
 
-module.exports = withBundleAnalyzer(withPWA({
+module.exports = withPWA({
   pwa: {
     disable: process.env.PWA === 'DISABLE',
-    register: true,
-    dest: 'public'
+    dest: 'public',
+    runtimeCaching: []
   }
-}))
+})
