@@ -12,13 +12,18 @@ const deleteAccountTest = async () => {
   }
 }
 
-console.log(">>>  deleting test's account")
+console.log(">>>  deleting test account")
 
 deleteAccountTest()
   .then(_ => {
-    console.log(">>>  test's account deleted")
+    console.log(">>>  test account deleted")
   })
   .catch(err => {
+    if (err.code === "P2025") {
+      console.log(">>>  cannot find test acoount in database")
+      return
+    }
+
     console.log(err)
-    console.log("^^^  error while deleting test's account")
+    console.log("^^^  error while deleting test account")
   })

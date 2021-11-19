@@ -1,4 +1,4 @@
-name: Node.js CI
+name: End to End Testing
 
 on: [deployment_status]
 jobs:
