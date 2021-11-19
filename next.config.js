@@ -1,9 +1,12 @@
 const withPWA = require('next-pwa')
+const runtimeCaching = require("next-pwa/cache")
 
 module.exports = withPWA({
   pwa: {
-    disable: process.env.PWA === 'DISABLE',
-    dest: 'public',
-    swSrc: 'service-worker.js'
-  }
+		dest: "public",
+		register: true,
+		skipWaiting: true,
+		runtimeCaching,
+		buildExcludes: [/middleware-manifest.json$/]
+	}
 })
