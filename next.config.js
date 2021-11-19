@@ -4,7 +4,6 @@ module.exports = withPWA({
   pwa: {
     disable: process.env.PWA === 'DISABLE',
     dest: 'public',
-    register: true,
-    skipWaiting: true
+    swSrc: 'service-worker.js'
   }
 })

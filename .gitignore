@@ -36,4 +36,6 @@ yarn-error.log*
 # vercel
 .vercel
 
-.vercel
+# PWA
+/public/workbox-*.js
+/public/sw.js

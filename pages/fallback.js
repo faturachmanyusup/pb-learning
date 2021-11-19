@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-export default function Offline() {
+export default () => {
   return (
     <>
       <Head>
