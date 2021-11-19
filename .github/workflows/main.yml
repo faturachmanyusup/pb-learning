@@ -6,13 +6,13 @@ jobs:
     if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛎
+      - name: Checkout
         uses: actions/checkout@v1
-      - name: Run Cypress 🌲
+      - name: Run Test
         uses: cypress-io/github-action@v2
         env:
           CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }}
-      - name: Delete test account
+      - name: RUN POSTTEST
         run: npm run posttest
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
