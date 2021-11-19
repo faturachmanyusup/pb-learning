@@ -1,15 +1,14 @@
 name: Node.js CI
 
-on: [push]
-
+on: [deployment_status]
 jobs:
-  cypress-run:
+  e2e:
+    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Run Test
+      - name: Checkout 🛎
+        uses: actions/checkout@v1
+      - name: Run Cypress 🌲
         uses: cypress-io/github-action@v2
-        with:
-          build: npm run build
-          start: npm start
+        env:
+          CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }}
