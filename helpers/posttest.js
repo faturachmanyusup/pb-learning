@@ -20,7 +20,7 @@ deleteAccountTest()
   })
   .catch(err => {
     if (err.code === "P2025") {
-      console.log(">>>  cannot find test acoount in database")
+      console.log(">>>  cannot find test account in database")
       return
     }
 

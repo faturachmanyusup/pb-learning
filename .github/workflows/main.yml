@@ -12,7 +12,7 @@ jobs:
         uses: cypress-io/github-action@v2
         env:
           CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }}
-      - name: RUN POSTTEST
+      - name: Run Posttest
         run: npm run posttest
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}

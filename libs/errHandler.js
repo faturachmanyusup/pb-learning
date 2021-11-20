@@ -57,6 +57,17 @@ export default function errHandler(res, err) {
     })
   }
 
+
+  /** PRISMA ERRORS BELOW HERE */
+  else if (err.code === "P2025") {
+    res.status(404).json({
+      name: "Not found",
+      message: "Cannot find test account in database"
+    })
+  }
+
+  
+  /** UNCAUGHT EXCEPTION */
   else {
     res.status(500).json({
       code: 500,
