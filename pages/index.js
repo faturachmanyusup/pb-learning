@@ -51,9 +51,10 @@ const Home = ({ overview = [] }) => {
         <div className="relative w-full flex lg:mt-10">
           <div
             className="
-            rounded-lg w-full grid grid-flow-row grid-cols-1 py-9 divide-y-2 divide-gray-100 bg-white-500 z-10
-            md:grid-flow-row md:grid-cols-3 md:divide-y-0 md:divide-x-0 
-          "
+              rounded-lg w-full grid grid-flow-row grid-cols-1
+              py-9 divide-y-2 divide-gray-100 bg-white-500 z-10
+              md:grid-flow-row md:grid-cols-3 md:divide-y-0 md:divide-x-0 
+            "
           >
             {overview.map((count, index) => (
               <div
@@ -65,7 +66,13 @@ const Home = ({ overview = [] }) => {
               >
                 <div className="flex mx-auto w-40 md:w-auto mn:w-full">
                   <div className="flex items-center justify-center bg-orange-100 w-12 h-12 mr-6 rounded-full">
-                    <img alt={count.name} src={count.icon} className="h-6 w-6" />
+                    <Image
+                      width={30}
+                      height={30}
+                      alt={count.name}
+                      src={count.icon}
+                      className="h-6 w-6"
+                    />
                   </div>
                   <div className="flex flex-col mn:flex-row mn:items-center mn:justify-between">
                     <p className="text-xl text-black-600 font-bold mn:text-lg mn:mr-3">
