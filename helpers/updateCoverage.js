@@ -26,35 +26,51 @@ const tempHTML = `
 <br/>
 `
 
-const coverageDir = join(__dirname, "../coverage/lcov-report/index.html")
-const target = join(__dirname, "../README.md")
-let coverage = fs.readFileSync(coverageDir, 'utf8')
-const readme = fs.readFileSync(target, 'utf8')
+const updateCoverage = () => {
+  try {
+    const coverageDir = join(__dirname, "../coverage/lcov-report/index.html")
+    const target = join(__dirname, "../README.md")
+    let coverage = fs.readFileSync(coverageDir, 'utf8').split("\n")
+    const readme = fs.readFileSync(target, 'utf8').split("\n")
 
-const startCov = coverage.split("\n").findIndex(text => text === `<table class="coverage-summary">`)
-const endCov = coverage.split("\n").findIndex(text => text === `</table>`)
+    const startCov = coverage.findIndex(text => text === `<table class="coverage-summary">`)
+    const endCov = coverage.findIndex(text => text === `</table>`)
 
-coverage = coverage.split("\n").slice(startCov, endCov + 1)
+    const timeGenStart = coverage.findIndex(text => text.includes(`<div class='footer quiet pad2 space-top1 center small'>`))
+    const timeGenEnd = timeGenStart + 5
+    let timeGenerated = coverage.slice(timeGenStart, timeGenEnd).map(text => text.trim()).join('\n')
 
-let coverageText = ""
+    coverage = coverage.slice(startCov, endCov + 1)
 
-coverage.map(text => {
-  if (!text) return
-  if (text.includes("td") && !text.includes("%") && !text.includes("href")) return
-  if (text.includes("><") && !text.includes("href")) return
+    let coverageText = ""
 
-  coverageText = coverageText + text + "\n"
-})
-let a = coverageText.replace(/<a/g, "<span")
-let coverageTextClean = a.replace(/<\/a>/g, "</span>")
+    coverage.map(text => {
+      if (!text) return
+      if (text.includes("td") && !text.includes("%") && !text.includes("href")) return
+      if (text.includes("><") && !text.includes("href")) return
 
-const startEdit = readme.split("\n").findIndex(text => text.includes("### Test Coverage"))
-let readmeText = ""
+      coverageText = coverageText + text + "\n"
+    })
 
-readme.split("\n").slice(0, startEdit + 1).map(text => {
-  readmeText = readmeText + text + "\n"
-})
+    let a = coverageText.replace(/<a/g, "<span")
+    let coverageTextClean = a.replace(/<\/a>/g, "</span>")
 
-const updatedReadme = readmeText + "\n" + tempHTML + "\n" + coverageTextClean
+    const startEdit = readme.findIndex(text => text.includes("### Test Coverage"))
 
-fs.writeFileSync(target, updatedReadme)
+    let readmeText = ""
+
+    readme.slice(0, startEdit + 1).map(text => {
+      readmeText = readmeText + text + "\n"
+    })
+
+    const updatedReadme = readmeText + "\n" + tempHTML + "\n" + coverageTextClean + "\n" + timeGenerated
+
+    fs.writeFileSync(target, updatedReadme)
+
+    console.log(">>>  Success. README updated.")
+  } catch (err) {
+    console.log(err, "^^^^ ERROR WHILE UPDATE COVERAGE")
+  }
+}
+
+updateCoverage()
