@@ -9,18 +9,14 @@ import config from "config/config"
 const Home = ({ overview = [] }) => {
   const router = useRouter()
 
-  const handleStart = () => {
-    router.push('/login')
-  }
-
   return (
     <>
       <Head>
         <title>PB-Learning</title>
-        <meta property="og:title" key="login" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="description" content="Belajar kapanpun dan di manapun dengan PB Learning" />
-        <meta name="theme-color" content="#FF4B2B"/>
+        <meta property="og:title" content="PB-Learning" />
+        <meta property="og:description" content="Belajar kapanpun dan di manapun dengan PB Learning" />
+        <meta property="og:url" content="https://pb-learning.vercel.app" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Header />
       <div className="max-w-screen-xl mt-20 px-10 xl:px-16 mx-auto">
@@ -34,7 +30,7 @@ const Home = ({ overview = [] }) => {
               PB-Learning hadir untuk membantu mereka yang terkendala jarak
               dalam kegiatan belajar mengajar.
             </p>
-            <ButtonPrimary onClick={handleStart}>Mulai</ButtonPrimary>
+            <ButtonPrimary onClick={() => router.push('/login')}>Mulai</ButtonPrimary>
           </div>
           <div className="w-full mn:h-8">
             <Image
@@ -90,7 +86,7 @@ const Home = ({ overview = [] }) => {
   );
 };
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps() {
   const baseUrl = config.url.base
 
   const overview = await GET(baseUrl + "/api/general/count")
