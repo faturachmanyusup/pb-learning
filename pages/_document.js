@@ -9,7 +9,8 @@ class MyDocument extends Document {
           <meta name='application-name' content='PB-Learning' />
           <meta name='description' content='Belajar kapanpun dan di manapun dengan PB Learning' />
           <meta name='theme-color' content='#EFEFEF' />
-          <link rel="canonical" href="https://pb-learning.vercel.app"/>
+          <link rel="preload" as="font" />
+          <link rel="canonical" href="https://pb-learning.vercel.app" />
           <link rel='apple-touch-icon' href='/assets/icons/apple-touch-icon.png' />
           <link rel='manifest' href='/manifest.json' />
         </Head>
