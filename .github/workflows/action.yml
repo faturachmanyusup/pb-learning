@@ -25,6 +25,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm ci
+          npm install -g @lhci/cli@0.8.x
           npm run postinstall
   e2e:
     name: Cypress
@@ -35,7 +36,6 @@ jobs:
       - name: Run Test
         uses: cypress-io/github-action@v2
         with:
-          build: npm run build
           start: npm start
         env:
           CYPRESS_BASE_URL: ${{ secrets.BASE_URL }}
@@ -51,5 +51,3 @@ jobs:
       - uses: actions/checkout@v2
       - name: run Lighthouse CI
         run: lhci autorun
-        with:
-          run: npm install -g @lhci/cli@0.8.x
