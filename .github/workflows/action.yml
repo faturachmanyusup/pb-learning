@@ -24,7 +24,7 @@ jobs:
             ${{ runner.OS }}-
       - name: Install dependencies
         run: |
-          npm install -g @lhci/cli@0.8.x
+          npm install @lhci/cli@0.8.x
           npm ci
           npm run postinstall
           npm build
@@ -35,6 +35,8 @@ jobs:
       - uses: actions/checkout@v1
       - name: Run Test
         uses: cypress-io/github-action@v2
+        with:
+          start: npm start
         env:
           CYPRESS_BASE_URL: ${{ secrets.BASE_URL }}
       - name: Run Posttest
