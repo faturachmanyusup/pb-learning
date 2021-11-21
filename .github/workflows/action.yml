@@ -26,13 +26,14 @@ jobs:
         run: |
           npm ci
           npm install -g @lhci/cli@0.8.x
+          npm i -g next
           npm run postinstall
-  
+
   lighthouseci:
+    name: Lighthouse
     runs-on: ubuntu-latest
-    needs: build
+    needs: e2e
     steps:
       - uses: actions/checkout@v2
-      - run: npm install -g @lhci/cli@0.8.x
       - run: npm run build
       - run: lhci autorun
