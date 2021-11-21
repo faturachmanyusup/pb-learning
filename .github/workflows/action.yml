@@ -36,6 +36,8 @@ jobs:
           install: npm ci
           build: npm run build
           start: npm start
+      - name: Run Post Test Script
+        run: npm run posttest
   lighthouseci:
     name: Lighthouse
     runs-on: ubuntu-latest
@@ -67,5 +69,5 @@ jobs:
         run: npm ci && npm install -g @lhci/cli@0.8.x
       - name: Building App
         run: npm run build
-      - name: run lighthouse test
+      - name: Run Lighthouse Test
         run: lhci autorun
