@@ -1,0 +1,20 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  e2e:
+    name: Cypress
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run Test
+        uses: cypress-io/github-action@v2
+        env:
+          CYPRESS_BASE_URL: ${{ secrets.BASE_URL }}
+      - name: Run Posttest
+        run: npm run posttest
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
