@@ -34,7 +34,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Run Test
-        uses: cypress-io/github-action@v2
+        uses: npm run test
         with:
           build: npm run build
           start: npm start
