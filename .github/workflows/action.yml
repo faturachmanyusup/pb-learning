@@ -16,6 +16,7 @@ jobs:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
       NEXTAUTH_URL: ${{ secrets.BASE_URL }}
       JWT_KEY: ${{ secrets.JWT_KEY }}
+      LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
     steps:
       - name: Checkout to Branch
         uses: actions/checkout@v2
