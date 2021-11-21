@@ -32,7 +32,7 @@ jobs:
   lighthouseci:
     name: Lighthouse
     runs-on: ubuntu-latest
-    needs: e2e
+    needs: build
     steps:
       - uses: actions/checkout@v2
       - run: npm run build
