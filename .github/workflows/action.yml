@@ -13,7 +13,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
-          node-version: '14.x'
+          node-version: 14
       - name: Check Modules Cache
         uses: actions/cache@v2
         with:
@@ -34,7 +34,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Run Test
-        run: npm run test
+      - run: npm run test
         with:
           build: npm run build
           start: npm start
@@ -50,9 +50,6 @@ jobs:
     needs: e2e
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 14
       - run: npm install -g @lhci/cli@0.8.x
       - run: npm run build
       - run: lhci autorun
