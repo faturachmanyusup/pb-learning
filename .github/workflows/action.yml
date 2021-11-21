@@ -54,6 +54,5 @@ jobs:
         with:
           node-version: 14
       - run: npm install && npm install -g @lhci/cli@0.8.x
-      with:
-        build: npm run build
-        start: npm start
+      - run: npm run build
+      - run: lhci autorun
