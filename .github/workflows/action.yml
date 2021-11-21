@@ -38,7 +38,7 @@ jobs:
       - name: Building App
         run: npm run build
       - name: Starting App
-        run: npm run build
+        run: npm start
       - name: Testing App
         run: npm run test
   lighthouseci:
