@@ -1,9 +1,6 @@
 name: App Test
 
-on:
-  push:
-    branches:
-      - main
+on: [deployment_status]
 jobs:
   build:
     name: Build
