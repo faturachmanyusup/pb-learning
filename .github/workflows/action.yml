@@ -33,9 +33,9 @@ jobs:
       - name: Testing App
         run: npm ci
         uses: cypress-io/github-action@v2
-          with:
-            build: npm run build
-            start: npm start
+        with:
+          build: npm run build
+          start: npm start
   lighthouseci:
     name: Lighthouse
     runs-on: ubuntu-latest
