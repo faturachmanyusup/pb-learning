@@ -36,6 +36,7 @@ jobs:
       - name: Run Test
         uses: cypress-io/github-action@v2
         with:
+          build: npm run build
           start: npm start
         env:
           CYPRESS_BASE_URL: ${{ secrets.BASE_URL }}
@@ -43,11 +44,14 @@ jobs:
         run: npm run posttest
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-  lhci:
-    name: Lighthouse
+  lighthouseci:
     runs-on: ubuntu-latest
-    needs: build
+    needs: e2e
     steps:
       - uses: actions/checkout@v2
-      - name: run Lighthouse CI
-        run: lhci autorun
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - run: npm install && npm install -g @lhci/cli@0.8.x
+      - run: npm run build
+      - run: lhci autorun
