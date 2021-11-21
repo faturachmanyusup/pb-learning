@@ -30,15 +30,12 @@ jobs:
           restore-keys: |
             ${{ runner.OS }}-node-
             ${{ runner.OS }}-
-      - name: Installing Dependencies
-        run: |
-          npm ci
-          npm install -g @lhci/cli@0.8.x
-          npm run postinstall
-      - name: Building App
-        run: npm run build
-      - name: Starting App
-        run: npm start
+      - name: Testing App
+        uses: cypress-io/github-action@v2
+          with:
+            install: npm ci
+            build: npm run build
+            start: npm start
       - name: Testing App
         run: npm run test
   lighthouseci:
