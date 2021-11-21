@@ -31,13 +31,11 @@ jobs:
             ${{ runner.OS }}-node-
             ${{ runner.OS }}-
       - name: Testing App
+        run: npm ci
         uses: cypress-io/github-action@v2
           with:
-            install: npm ci
             build: npm run build
             start: npm start
-      - name: Testing App
-        run: npm run test
   lighthouseci:
     name: Lighthouse
     runs-on: ubuntu-latest
