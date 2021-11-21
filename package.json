@@ -6,6 +6,7 @@
     "postinstall": "npx prisma generate",
     "build": "next build",
     "start": "next start",
+    "serve:lhci": "npm start",
     "test": "cypress run --browser edge",
     "test:open": "cypress open",
     "posttest": "node helpers/posttest.js",
