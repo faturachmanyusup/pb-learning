@@ -1,16 +1,35 @@
 name: Cypress
 
-on: [deployment_status]
+on: [push]
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - name: Check Modules Cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-
+            ${{ runner.OS }}-
+      - name: Install dependencies
+        run: npm ci
+        run: npm run postinstall
+        run: npm build
   e2e:
-    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - name: Run Test
         uses: cypress-io/github-action@v2
         env:
-          CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }}
+          CYPRESS_BASE_URL: ${{ secrets.BASE_URL }}
       - name: Run Posttest
         run: npm run posttest
         env:

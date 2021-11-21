@@ -1,9 +1,8 @@
-name: Lighthouse
+name: Cypress
 
-on: [deployment_status]
+on: [push]
 jobs:
   lighthouse:
-    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
