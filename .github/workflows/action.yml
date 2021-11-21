@@ -5,41 +5,10 @@ on:
     branches:
       - main
 jobs:
-  e2e:
-    name: Cypress
-    runs-on: ubuntu-latest
-    env:
-      GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
-      GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
-      CYPRESS_BASE_URL: ${{ secrets.BASE_URL }}
-      DATABASE_URL: ${{ secrets.DATABASE_URL }}
-      NEXTAUTH_URL: ${{ secrets.BASE_URL }}
-      JWT_KEY: ${{ secrets.JWT_KEY }}
-    steps:
-      - name: Checkout to Branch
-        uses: actions/checkout@v2
-      - name: Setup Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14
-      - name: Checking Modules Cache
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.OS }}-node-
-            ${{ runner.OS }}-
-      - name: Testing App
-        uses: cypress-io/github-action@v2
-        with:
-          install: npm ci
-          build: npm run build
-          start: npm start
+  
   lighthouseci:
     name: Lighthouse
     runs-on: ubuntu-latest
-    needs: e2e
     env:
       GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
       GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
@@ -63,13 +32,8 @@ jobs:
             ${{ runner.OS }}-node-
             ${{ runner.OS }}-
       - name: Installing Dependencies
-        run: |
-          npm ci
-          npm install -g @lhci/cli@0.8.x
-          npm run postinstall
+        run: npm ci && npm install -g @lhci/cli@0.8.x
       - name: Building App
         run: npm run build
-      - name: Starting App
-        run: npm start
       - name: run lighthouse test
         run: lhci autorun
