@@ -6,14 +6,6 @@ module.exports = {
     },
     upload: {
       target: 'temporary-public-storage',
-    },
-    assert: {
-      assertions: {
-        canonical: 'off',
-        'image-aspect-ratio': 'off',
-        'color-contrast': 'off',
-        'font-display': 'off'
-      }
     }
   },
 };
