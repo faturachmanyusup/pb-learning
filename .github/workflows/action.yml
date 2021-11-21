@@ -40,6 +40,7 @@ jobs:
           start: npm start
         env:
           CYPRESS_BASE_URL: ${{ secrets.BASE_URL }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
       - name: Run Posttest
         run: npm run posttest
         env:
@@ -53,5 +54,6 @@ jobs:
         with:
           node-version: 14
       - run: npm install && npm install -g @lhci/cli@0.8.x
-      - run: npm run build
-      - run: lhci autorun
+      with:
+        build: npm run build
+        start: npm start
