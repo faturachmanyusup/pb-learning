@@ -23,7 +23,28 @@ jobs:
             ${{ runner.OS }}-node-
             ${{ runner.OS }}-
       - name: Install dependencies
-        run: npm install -g @lhci/cli@0.8.x
-        run: npm ci
-        run: npm run postinstall
-        run: npm build
+        run: |
+          npm install -g @lhci/cli@0.8.x
+          npm ci
+          npm run postinstall
+          npm build
+  e2e:
+    name: Cypress
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run Test
+        uses: cypress-io/github-action@v2
+        env:
+          CYPRESS_BASE_URL: ${{ secrets.BASE_URL }}
+      - name: Run Posttest
+        run: npm run posttest
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+  lhci:
+    name: Lighthouse
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: run Lighthouse CI
+        run: lhci autorun
