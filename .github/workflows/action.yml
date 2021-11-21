@@ -1,6 +1,6 @@
-name: Test
+name: App Test
 
-on: [push]
+on: push
 jobs:
   build:
     name: Build
