@@ -10,6 +10,7 @@ clientsClaim()
 // must include following lines when using inject manifest module from workbox
 // https://developers.google.com/web/tools/workbox/guides/precache-files/workbox-build#add_an_injection_point
 const WB_MANIFEST = self.__WB_MANIFEST
+self.__WB_DISABLE_DEV_LOGS = true
 // Precache fallback route and image
 WB_MANIFEST.push(
   {

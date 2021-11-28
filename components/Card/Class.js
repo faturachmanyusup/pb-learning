@@ -9,7 +9,7 @@ export default function ClassCard(props = {
   classCode: ""
 }) {
   return (
-    <Link href={'/class/c/' + props.classCode}>
+    <Link href={'/class/forum/' + props.classCode}>
       <div className={`bg-white transform motion-safe:active:scale-98 rounded-lg shadow-xl cursor-pointer ${props.className}`}>
         <img className="md:h-28 rounded w-full object-cover object-center mb-4" src={props.image} />
         <div className="px-3 pb-4">

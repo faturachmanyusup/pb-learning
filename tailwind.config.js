@@ -23,46 +23,6 @@ module.exports = {
       "orange-md": "0px 20px 40px -15px rgba(245,56,56,0.81) ",
       none: "none",
     },
-    colors: {
-      transparent: "transparent",
-      black: {
-        500: "#2A3140",
-        600: "#0B132A",
-        900: "#000",
-      },
-      orange: {
-        100: "#FFECEC",
-        500: "#F53855",
-      },
-      green: {
-        200: "#6EE7B7",
-        300: "#6ee7b7",
-        500: "#2FAB73",
-        700: "#2F855A"
-      },
-      white: {
-        300: "#F8F8F8",
-        500: "#fff",
-      },
-      gray: {
-        100: "#EEEFF2",
-        200: "#F6F5F7",
-        300: "#e0e0e0",
-        400: "#AFB5C0",
-        500: "#DDDDDD",
-        600: "#4B5563",
-        900: "#111827",
-        lighter: "#F3F7F9",
-        darker: "#504D4D"
-      },
-      red: {
-        400: "#F56565",
-        600: "#C53030",
-      },
-      indigo: {
-        500: "#6366F1"
-      }
-    },
     scale: {
       "0": "0",
      "25": ".25",
@@ -79,6 +39,46 @@ module.exports = {
      "200": "2",
     },
     extend: {
+      colors: {
+        transparent: "transparent",
+        black: {
+          500: "#2A3140",
+          600: "#0B132A",
+          900: "#000",
+        },
+        orange: {
+          100: "#FFECEC",
+          500: "#F53855",
+        },
+        green: {
+          200: "#6EE7B7",
+          300: "#6ee7b7",
+          500: "#2FAB73",
+          700: "#2F855A"
+        },
+        white: {
+          300: "#F8F8F8",
+          500: "#fff",
+        },
+        gray: {
+          100: "#EEEFF2",
+          200: "#F6F5F7",
+          300: "#e0e0e0",
+          400: "#AFB5C0",
+          500: "#DDDDDD",
+          600: "#4B5563",
+          900: "#111827",
+          lighter: "#F3F7F9",
+          darker: "#504D4D"
+        },
+        red: {
+          400: "#F56565",
+          600: "#C53030",
+        },
+        indigo: {
+          500: "#6366F1"
+        }
+      },
       animation: {
         "fade-out": "fadeOut 15s ease-in-out",
       },

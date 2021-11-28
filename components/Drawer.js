@@ -18,7 +18,7 @@ export default function Drawer({
 
   return (
     <div className="drawer-container h-screen block" onClick={handleClick}>
-      <div className="drawer-content block flex flex-col justify-between px-4 py-2">
+      <div className="drawer-content flex flex-col justify-between px-4 py-2">
         <div>
           <Link href="/class/list">
             <span className="drawer-list rounded-md">

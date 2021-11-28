@@ -27,7 +27,7 @@ const Class = (props = {
     <>
       <HeaderClass toggleDrawer={openDrawer} class={props.class} user={props.user} />
       <Drawer isOpen={drawerOpen} onClick={() => setDrawerOpen(false)} />
-      <div className="layout-class max-w-screen-xl mx-auto flex flex-col mt-24 mb-2">
+      <div className="max-w-screen-xl mx-3 2xl:w-9/12 xl:w-10/12 lg:w-11/12 md:w-11/12 lg:mx-auto flex flex-col mt-24 mb-12">
         {props.children}
       </div>
     </>

@@ -142,7 +142,7 @@ const CreateClass = () => {
             <span className="text-2xl font-bold">Buat Kelas</span>
           </div>
           <form
-            className="md:w-8/12 md:mt-20 mt-10 px-10 xl:px-16 mx-auto bg-white shadow-2xl rounded px-8 py-6 mb-4 flex flex-col"
+            className="md:w-8/12 md:mt-20 mt-10 xl:px-16 mx-auto bg-white shadow-2xl rounded px-8 py-6 mb-4 flex flex-col"
             onSubmit={handleSubmit}
           >
             <div className="text-lg font-semibold mb-3 -ml-5 sm:-ml-3 mn:-ml-3">Info Kelas</div>
@@ -277,7 +277,7 @@ const CreateClass = () => {
             </Accordion>
             <div className="-mx-3 md:flex mb-2 mt-8 justify-end">
               <div className="flex flex-row px-3">
-                <ButtonPrimary type="button" onClick={goBack} className="mn:h-8 mn:h-12 mn:w-28">
+                <ButtonPrimary type="button" onClick={goBack} className="sm:h-8 mn:h-12 mn:w-28">
                   Kembali
                 </ButtonPrimary>
                 <ButtonPrimary

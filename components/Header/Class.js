@@ -14,6 +14,7 @@ const Class = (props = {
             <Img
               src="/assets/icons/list.svg"
               width="30"
+              alt="menu"
               height="30"
               className="cursor-pointer"
               onClick={props.toggleDrawer}
@@ -27,22 +28,22 @@ const Class = (props = {
         </div>
         <div className="col-start-5 col-end-7 flex flex-row justify-between align-center self-center sm:hidden mn:hidden">
           <div className="cursor-pointer">
-            <Link href="/forum">
+            <Link href={`/class/forum/${props.class.code}`}>
               Forum
             </Link>
           </div>
           <div className="cursor-pointer">
-            <Link href="/task">
+            <Link href={`/class/task/${props.class.code}`}>
               Tugas
             </Link>
           </div>
           <div className="cursor-pointer">
-            <Link href="/member">
+            <Link href={`/class/member/${props.class.code}`}>
               Anggota
             </Link>
           </div>
           <div className="cursor-pointer">
-            <Link href="/grade">
+            <Link href={`/class/grade/${props.class.code}`}>
               Nilai
             </Link>
           </div>
@@ -51,6 +52,7 @@ const Class = (props = {
           <div className="self-center rounded-full h-8 w-8 flex items-center justify-center border-2 border-black-600 cursor-pointer sm:mb-0.3 mn:mb-0.3">
             <img
               src={props.user?.image || "/assets/icons/person-fill.svg"}
+              alt={props.user?.name || "profile"}
               width="27"
               height="27"
               className="rounded-full"

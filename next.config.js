@@ -27,6 +27,7 @@ const securityHeaders = [
 module.exports = withPWA({
   reactStrictMode: true,
   pwa: {
+    disable: process.env.PWA === 'DISABLE',
 		dest: "public",
 		register: true,
 		skipWaiting: true,
