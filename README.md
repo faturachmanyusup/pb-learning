@@ -3,15 +3,15 @@
 an Open Online Classes App
 
 ### Features
-- Create new class (automatically defined as teacher)
-- Join class using Class ID (automatically defined as student)
+- Create new class (automatically defined as a teacher)
+- Join class using Class ID (automatically defined as a student)
 - Make schedules
 - Make assignments
 - Make assessments
 - Upload assignments
 - Class Forum for chatting
 - Notification by email (later.. maybe)
-- Leaderboard (not necessary I think, but let's we see later)
+- Leaderboard (unnecessary I think, but let's we see later)
 
 <br>
 
