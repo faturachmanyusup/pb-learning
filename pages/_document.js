@@ -12,7 +12,6 @@ class MyDocument extends Document {
           <link rel="canonical" href={process.env.NEXTAUTH_URL} />
           <link rel='apple-touch-icon' href='/assets/icons/apple-touch-icon.png' />
           <link rel='manifest' href='/manifest.json' />
-          <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet" />
         </Head>
         <body>
           <Main />

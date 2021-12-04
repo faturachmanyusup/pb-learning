@@ -8,6 +8,7 @@ import Message from "components/Card/Message"
 import FormMessage from "components/Form/Message"
 
 const Code = (props = { session: {}, class: {} }) => {
+  const dateFormat = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   const limit = 5;
   const observerRef = useRef()
   const [messages, setMessages] = useState([])
@@ -28,6 +29,10 @@ const Code = (props = { session: {}, class: {} }) => {
 
     observer.observe(observerRef.current)
   }, [messages.length])
+
+  const random = (max) => {
+    return Math.floor(Math.random() * max) + 1
+  }
 
   const sendChat = (e) => {
     e.preventDefault()
@@ -88,9 +93,10 @@ const Code = (props = { session: {}, class: {} }) => {
         <meta property="og:title" key="create-class" />
         <meta name="description" content={`Kelas - ${props.class.name}`} />
         <meta name="theme-color" content="#FF4B2B" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet" />
       </Head>
       <ClassLayout class={props.class} user={props.session.user}>
-        <div className="md:h-52 header-body rounded-lg bg-forum-class bg-cover">
+        <div className={`md:h-52 header-body rounded-lg bg-banner-class bg-cover text-white-300`}>
           <div className="flex flex-col my-2 mx-4 md:mt-20 md:ml-6">
             <div className="font-bold my-3 text-3xl w-full">
               {props.class.name}
@@ -99,7 +105,11 @@ const Code = (props = { session: {}, class: {} }) => {
               oleh: {props.class.teacher.name}
             </div>
             <div className="text-base w-full">
-              jadwal terdekat
+              Jadwal Terdekat: &nbsp;
+              {props.class.Schedule[0]
+                ? new Date(props.class.Schedule[0].date).toLocaleDateString('id-ID', dateFormat)
+                : 'Tidak ada jadwal'
+              }
             </div>
           </div>
         </div>

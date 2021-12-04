@@ -20,8 +20,20 @@ export default async function get(req, res) {
 
     const code = req.query.code
 
-    const classFound = await pg.class.findUnique({
-      where: { code },
+    const classFound = await pg.class.findFirst({
+      where: {
+        code: code,
+        OR: [
+          {
+            students: {
+              some: {
+                studentId: session.user.id
+              }
+            }
+          },
+          { teacherId: session.user.id }
+        ]
+      },
       include: {
         teacher: {
           select: {
@@ -29,6 +41,18 @@ export default async function get(req, res) {
             email: true,
             image: true
           }
+        },
+        Schedule: {
+          select: {
+            id: true,
+            date: true,
+            notes: true
+          },
+          where: {
+            date: { gte: new Date() }
+          },
+          orderBy: { date: 'asc' },
+          take: 1
         }
       }
     })

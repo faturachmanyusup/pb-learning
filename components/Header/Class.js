@@ -6,6 +6,8 @@ const Class = (props = {
   class: {},
   toggleDrawer: () => { }
 }) => {
+  const dateFormat = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
   return (
     <header className="fixed top-0 w-full z-30 bg-white-500 transition-all border-b border-gray-500">
       <nav className="max-w-screen-xl px-6 sm:px-8 lg:pt-1 lg:pb-1 mx-auto grid grid-flow-col pt-2 pb-1 sm:py-1">
@@ -23,7 +25,12 @@ const Class = (props = {
           <div className="self-center">
             <div className="text-base sm:mb-5 font-medium">{props.class.name}</div>
             <div className="text-xs sm:hidden mn:hidden">{props.class.teacher.name}</div>
-            <div className="text-xs sm:hidden mn:hidden">Jadwal terdekat</div>
+            <div className="text-xs sm:hidden mn:hidden">
+              {props.class.Schedule[0]
+                ? new Date(props.class.Schedule[0].date).toLocaleDateString('id-ID', dateFormat)
+                : 'Tidak ada jadwal'
+              }
+            </div>
           </div>
         </div>
         <div className="col-start-5 col-end-7 flex flex-row justify-between align-center self-center sm:hidden mn:hidden">

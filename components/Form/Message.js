@@ -35,10 +35,10 @@ const Message = (props = {
       >
       </div>
       <div className="flex flex-row self-end ml-auto">
-        <button title="attach" name="attach" type="button" className="md:mr-3 self-end">
+        <button title="tambah file" name="tambah file" type="button" className="md:mr-3 self-end">
           <i className="fas fa-paperclip text-xl md:text-2xl mx-2 cursor-pointer" />
         </button>
-        <button title="submit" name="submit" type="submit" className="md:mr-2 self-end">
+        <button title="kirim" name="kirim" type="submit" className="md:mr-2 self-end">
           <i className="fas fa-paper-plane text-xl md:text-2xl mx-2 cursor-pointer" />
         </button>
       </div>

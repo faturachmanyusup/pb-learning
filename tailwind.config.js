@@ -102,7 +102,19 @@ module.exports = {
         "0.3": "0.3rem"
       },
       backgroundImage: {
-        'forum-class': "url('https://gstatic.com/classroom/themes/img_cinema.jpg')",
+        'banner-class': `
+          linear-gradient(
+            to right bottom,
+            rgba(0, 0, 0, .60),
+            rgba(0, 0, 0, .55),
+            rgba(0, 0, 0, .50),
+            rgba(0, 0, 0, .45),
+            rgba(0, 0, 0, .40),
+            rgba(0, 0, 0, .35),
+            rgba(0, 0, 0, .30)
+          ),
+          url('https://picsum.photos/800/300?random=1')
+        `
       },
     },
   },
