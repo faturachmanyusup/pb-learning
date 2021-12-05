@@ -26,10 +26,12 @@ export default function Drawer({
               <p>Semua Kelas</p>
             </span>
           </Link>
-          <div className="drawer-list rounded-md">
-            <Img src="/assets/icons/calendar-date.svg" height="30" width="30" />
-            <p>Kalender</p>
-          </div>
+          <Link href="/calendar">
+            <span className="drawer-list rounded-md">
+              <Img src="/assets/icons/calendar-date.svg" height="30" width="30" />
+              <p>Kalender</p>
+            </span>
+          </Link>
           <div className="drawer-list rounded-md">
             <Img src="/assets/icons/clipboard.svg" height="30" width="30" />
             <p>Tugas</p>

@@ -26,7 +26,7 @@ const Dashboard = (props = {
     <>
       <HeaderDashboard toggleDrawer={openDrawer} user={props.user} />
       <Drawer isOpen={drawerOpen} onClick={() => setDrawerOpen(false)} />
-      <div className="max-w-screen-xl mx-auto flex flex-col mt-24 mb-2 px-7">
+      <div className="max-w-screen-xl mx-auto flex flex-col mt-20 md:mt-24 mb-2 px-7">
         {props.children}
       </div>
     </>

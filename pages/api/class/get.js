@@ -1,5 +1,4 @@
 import errHandler from "libs/errHandler"
-import { Chat } from "libs/mongo";
 import pg from "libs/pg";
 
 export default async function get(req, res) {

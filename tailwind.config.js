@@ -79,6 +79,16 @@ module.exports = {
           500: "#6366F1"
         }
       },
+      height: {
+        '100px': '100px',
+        '10vw': '10vw',
+      },
+      minHeight: {
+        '100px': '100px',
+      },
+      minHeight: {
+        '100px': '100px',
+      },
       animation: {
         "fade-out": "fadeOut 15s ease-in-out",
       },
