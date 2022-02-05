@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { useSession } from 'next-auth/react'
-import Overlay from './Overlay';
+import { Overlay } from './Overlay';
 import { SignUp } from './SignUp';
 import { SignIn } from './SignIn';
 import AlertFloating from 'components/Alert/Floating';

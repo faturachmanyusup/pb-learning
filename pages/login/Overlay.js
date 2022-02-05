@@ -1,6 +1,7 @@
 import ButtonOutline from 'components/Button/Outline'
+import DisablePage from 'libs/disabledPage'
 
-export default function Overlay(props) {
+export function Overlay(props) {
   return (
     <div className="overlay-container">
       <div className="overlay">
@@ -28,3 +29,5 @@ export default function Overlay(props) {
     </div>
   )
 }
+
+export default DisablePage

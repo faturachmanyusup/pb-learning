@@ -1,11 +1,12 @@
 import Head from "next/head"
 import ClassLayout from "components/Layout/Class"
-import UnderConstruction from "components/Template/UnderConstruction"
 import { getSession } from "next-auth/react"
 import { GET } from "libs/request"
 import config from "config/config"
+import UserCard from "components/Card/User"
 
-const Member = (props = { session: {}, class: {} }) => {
+const Member = (props = { session: {}, class: {}, members: [] }) => {
+  console.log(props.members)
   return (
     <>
       <Head>
@@ -15,7 +16,16 @@ const Member = (props = { session: {}, class: {} }) => {
         <meta name="theme-color" content="#FF4B2B" />
       </Head>
       <ClassLayout class={props.class} user={props.session.user}>
-        <UnderConstruction />
+        <div class="flex flex-wrap gap-10">
+          {props.members.map(member => 
+            <UserCard
+              name={member.name}
+              email={member.email}
+              img={member.img}
+              asMentor={member.teaches.length > 0}
+            />
+          )}
+        </div>
       </ClassLayout>
     </>
   )
@@ -36,7 +46,7 @@ export async function getServerSideProps(ctx) {
 
     const { code } = ctx.params
 
-    const res = await GET(config.url.base + "/api/class/get?code=" + code, {
+    const res = await GET(config.url.base + "/api/class/member/get-all?code=" + code, {
       session: JSON.stringify(session)
     })
 
@@ -47,14 +57,15 @@ export async function getServerSideProps(ctx) {
     return {
       props: {
         session: session,
-        class: res.data.class
+        class: res.data.class,
+        members: res.data.members
       }
     }
   } catch (error) {
     return {
       redirect: {
         permanent: false,
-        destination: '/404'
+        destination: `/${error.status}`
       }
     }
   }

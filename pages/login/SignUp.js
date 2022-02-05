@@ -17,7 +17,6 @@ const defaultForm = {
 }
 
 export function SignUp(props) {
-
   const [form, setForm] = useState(defaultForm)
   const [loading, setLoading] = useState(false)
 

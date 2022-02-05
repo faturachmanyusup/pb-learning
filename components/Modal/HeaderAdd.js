@@ -36,7 +36,7 @@ const HeaderAdd = ({ open = false }) => {
       .then(res => {
         if (res.status !== 201) throw res
 
-        router.push("/class/c/" + res.data.classCode)
+        router.push("/class/forum/" + res.data.classCode)
       })
       .catch(err => {
         setError({
